@@ -24,19 +24,19 @@ local scorePosition = vec2(280, 20)
 local scoreSize = 20
 local scoreColor = { 240, 255, 200 }
 
-local levels = { 2, 3, 4, 5, 6, 7, 8, 9 }
-local tipLimits = { 0.02, 0.05, 0.10 }
+local levels = { 3, 4, 5, 6, 7, 8, 9 }
+local tipLimits = { 0.05, 0.10, 0.20 }
 local tips = {
 	{ 000, 000, 000 },	-- 1
-	{ 005, 010, 020 },	-- 2
-	{ 020, 050, 100 },	-- 3
-	{ 010, 010, 020 },	-- 4
-	{ 050, 100, 200 },	-- 5
-	{ 020, 050, 100 },	-- 6
-	{ 100, 200, 500 },	-- 7
-	{ 020, 050, 100 },	-- 8
-	{ 100, 200, 500 },	-- 9
-	{ 050, 100, 200 },	-- 10
+	{ 020, 010, 005 },	-- 2
+	{ 100, 050, 020 },	-- 3
+	{ 020, 010, 010 },	-- 4
+	{ 200, 100, 050 },	-- 5
+	{ 100, 050, 020 },	-- 6
+	{ 500, 200, 100 },	-- 7
+	{ 100, 050, 020 },	-- 8
+	{ 500, 200, 100 },	-- 9
+	{ 200, 100, 050 },	-- 10
 }
 
 local abs = math.abs
@@ -219,25 +219,34 @@ function Class:goalAchieved(event)
 
 	-- Determine tips
 	local previousAngle = angles[1]
+	local results = {}
 	for i = 2, #angles do
-		local sliceAngle = angles[i] - previousAngle
+		local currentAngle = angles[i]
+		local sliceAngle = currentAngle - previousAngle
 		local angularError = abs(sliceAngle - goal)
-		previousAngle = angles[i]
+		local result = {
+			angle = angles[i - 1] + sliceAngle * 0.5,
+			rating = 4
+		}
 
-		if angularError <= goal * tipLimits[1] then
-			self:increaseScore(tips[self.nbCustomers][3])
-			print("Perfect!")
-		elseif angularError <= goal * tipLimits[2] then
-			self:increaseScore(tips[self.nbCustomers][2])
-			print("Good!")
-		elseif angularError <= goal * tipLimits[3] then
-			self:increaseScore(tips[self.nbCustomers][1])
-			print("OK")
-		else
-			print("Poor")
+		previousAngle = currentAngle
+
+		for j = 1, #tipLimits do
+			if angularError <= goal * tipLimits[j] then
+				result.rating = j
+				break
+			end
 		end
+
+		results[#results + 1] = result
 	end
 
+	-- Show results
+	Results.create{
+		results = results,
+		position = self.pizza.position
+	}
+
 	-- Send next pizza
-	self.taskHandler:addTask("sendPizza")
+	-- self.taskHandler:addTask("sendPizza")
 end

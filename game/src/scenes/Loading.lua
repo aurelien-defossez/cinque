@@ -18,7 +18,8 @@ local classes = {
 	"src.game.Crowd",
 	"src.game.SceneGraph",
 	"src.game.GestureDetector",
-	"src.game.Gesture"
+	"src.game.Gesture",
+	"src.game.Results"
 }
 
 local phases = {
