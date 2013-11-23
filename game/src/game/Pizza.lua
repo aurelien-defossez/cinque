@@ -23,6 +23,7 @@ function Class.create(options)
 
 	-- Initialize attributes
 	self.position = options.position
+	self.goal = options.goal
 	self.slices = {}
 	self.innerCircle = circle(self.position, innerRadius)
 	self.outerCircle = circle(self.position, outerRadius)
@@ -91,5 +92,12 @@ function Class:gestureEnded(event)
 			center = self.position,
 			angle = angle
 		}
+
+		if #self.slices == self.goal then
+			Runtime:dispatchEvent{
+				name = "goalAchieved",
+				slices = self.slices
+			}
+		end
 	end
 end
