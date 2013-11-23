@@ -198,6 +198,9 @@ function Class:goalAchieved(event)
 	local goal = 360 / self.nbCustomers
 	local angles = {}
 
+	-- Lock gestures
+	self.pizza:disable()
+
 	-- Normalize angles
 	for index, slice in pairs(event.slices) do
 		local angle = slice.angle

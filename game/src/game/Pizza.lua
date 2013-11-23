@@ -25,6 +25,7 @@ function Class.create(options)
 	self.position = options.position
 	self.goal = options.goal
 	self.slices = {}
+	self.enabled = true
 
 	-- Create hitboxes
 	self.innerCircle = circle(self.position, innerRadius)
@@ -67,39 +68,45 @@ end
 -- Methods
 -----------------------------------------------------------------------------------------
 
+function Class:disable()
+	self.enabled = false
+end
+
 -----------------------------------------------------------------------------------------
 -- Event listeners
 -----------------------------------------------------------------------------------------
 
 function Class:gestureEnded(event)
-	local points = event.gesture.points
-	local firstPoint = points[1]
-	local lastPoint = points[#points]
-	local sliced = false
-	local angle
+	if self.enabled then
+		local points = event.gesture.points
+		local firstPoint = points[1]
+		local lastPoint = points[#points]
+		local sliced = false
+		local angle
 
-	-- Detect inward cutting
-	if not self.outerCircle:collidePoint(firstPoint) and self.innerCircle:collidePoint(lastPoint) then
-		sliced = true
-		angle = -(lastPoint - firstPoint):angle()
+		-- Detect inward cutting
+		if not self.outerCircle:collidePoint(firstPoint) and self.innerCircle:collidePoint(lastPoint) then
+			sliced = true
+			angle = -(lastPoint - firstPoint):angle()
 
-	-- Detect outward cutting
-	elseif self.innerCircle:collidePoint(firstPoint) and not self.outerCircle:collidePoint(lastPoint) then
-		sliced = true
-		angle = -(lastPoint - firstPoint):angle() + 180
-	end
+		-- Detect outward cutting
+		elseif self.innerCircle:collidePoint(firstPoint) and not self.outerCircle:collidePoint(lastPoint) then
+			sliced = true
+			angle = -(lastPoint - firstPoint):angle() + 180
+		end
 
-	if sliced then
-		self.slices[#self.slices + 1] = Slice.create{
-			center = self.position,
-			angle = angle
-		}
-
-		if #self.slices == self.goal then
-			Runtime:dispatchEvent{
-				name = "goalAchieved",
-				slices = self.slices
+		if sliced then
+			self.slices[#self.slices + 1] = Slice.create{
+				center = self.position,
+				angle = angle
 			}
+
+			if #self.slices == self.goal then
+				Runtime:dispatchEvent{
+					name = "goalAchieved",
+					slices = self.slices
+				}
+			end
 		end
 	end
 end
