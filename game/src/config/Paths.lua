@@ -12,6 +12,8 @@ return {
 
 	-- Masks
 	masks = {
-		-- cut = graphics.newMask("runtimedata/graphics/sfx/mask_cut.png"),
+		cut45 = graphics.newMask("runtimedata/graphics/masks/cut-45.png"),
+		cut90 = graphics.newMask("runtimedata/graphics/masks/cut-90.png"),
+		cut180 = graphics.newMask("runtimedata/graphics/masks/cut-180.png")
 	}
 }

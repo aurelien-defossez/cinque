@@ -205,7 +205,8 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../sprites/main/pizza.png</filename>
+            <filename>../sprites/main/pizza_complete.png</filename>
+            <filename>../sprites/main/effect_slice.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

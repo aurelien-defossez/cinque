@@ -25,17 +25,17 @@ local audio = require("audio")
 -- Initialization and Destruction
 -----------------------------------------------------------------------------------------
 
--- Create the game scene
---
--- Parameters:
---  mode: The game mode
---  difficulty: The difficulty of the arcade mode
---  level: The first level id (optional, default is 1)
 function Class.create(options)
 	local self = utils.extend(Class)
 
 	-- Initialize attributes
+	self.gestureDetector = GestureDetector.create()
 	self.rogueElements = {}
+
+	-- Create pizzas
+	self.pizza = Pizza.create{
+		position = vec2(100, 100)
+	}
 
 	Runtime:addEventListener("addRogueElement", self)
 	Runtime:addEventListener("removeRogueElement", self)
@@ -55,6 +55,8 @@ function Class:destroy()
 	for _, element in pairs(self.rogueElements) do
 		element:destroy()
 	end
+
+	self.pizza:destroy()
 
 	utils.deleteObject(self)
 end

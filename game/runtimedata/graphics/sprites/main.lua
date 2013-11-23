@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker (http://www.codeandweb.com/texturepacker)
 --
--- $TexturePacker:SmartUpdate:ac514ee682a9e75f612189da6c3f4e54:14e003f463e4aea4c4b32c553feb507b:7b91f048090ec15651888590f1f35b23$
+-- $TexturePacker:SmartUpdate:116d6188647d3ae34e68cd035083b334:0f9809f3888b7993c31d7214e68c42f9:7b91f048090ec15651888590f1f35b23$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -15,23 +15,36 @@ SheetInfo.sheet =
     frames = {
     
         {
-            -- pizza
+            -- effect_slice
+            x=2,
+            y=154,
+            width=6,
+            height=76,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 5,
+            sourceHeight = 75
+        },
+        {
+            -- pizza_complete
             x=2,
             y=2,
-            width=50,
-            height=50,
+            width=150,
+            height=150,
 
         },
     },
     
-    sheetContentWidth = 64,
-    sheetContentHeight = 64
+    sheetContentWidth = 256,
+    sheetContentHeight = 256
 }
 
 SheetInfo.frameIndex =
 {
 
-    ["pizza"] = 1,
+    ["effect_slice"] = 1,
+    ["pizza_complete"] = 2,
 }
 
 function SheetInfo:getSheet()

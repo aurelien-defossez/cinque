@@ -13,7 +13,10 @@ local Class = storyboard.newScene()
 -----------------------------------------------------------------------------------------
 
 local classes = {
-	"src.game.SceneGraph"
+	"src.game.Pizza",
+	"src.game.SceneGraph",
+	"src.game.GestureDetector",
+	"src.game.Gesture"
 }
 
 local phases = {
