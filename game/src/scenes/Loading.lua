@@ -15,6 +15,7 @@ local Class = storyboard.newScene()
 local classes = {
 	"src.game.Pizza",
 	"src.game.Slice",
+	"src.game.Crowd",
 	"src.game.SceneGraph",
 	"src.game.GestureDetector",
 	"src.game.Gesture"

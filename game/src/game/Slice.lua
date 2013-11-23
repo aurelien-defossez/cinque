@@ -34,15 +34,10 @@ function Class.create(options)
 		rotation = self.angle
 	}
 
-	-- Bind events
-	Runtime:addEventListener("gestureEnded", self)
-
 	return self
 end
 
 function Class:destroy()
-	Runtime:removeEventListener("gestureEnded", self)
-
 	self.sprite:destroy()
 
 	utils.deleteObject(self)

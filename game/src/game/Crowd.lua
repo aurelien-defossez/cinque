@@ -1,19 +1,19 @@
 -----------------------------------------------------------------------------------------
 --
--- Pizza.lua
+-- Crowd.lua
 --
 -----------------------------------------------------------------------------------------
 
 local Class = {}
-Pizza = Class
+Crowd = Class
 
 -----------------------------------------------------------------------------------------
 -- Class attributes
 -----------------------------------------------------------------------------------------
 
-local innerRadius = 30
-local outerRadius = 75
-
+local numberPosition = vec2(260, 100)
+local numberSize = 96
+local numberColor = { 255, 200, 200 }
 -----------------------------------------------------------------------------------------
 -- Initialization and Destruction
 -----------------------------------------------------------------------------------------
@@ -22,40 +22,22 @@ function Class.create(options)
 	local self = utils.extend(Class)
 
 	-- Initialize attributes
-	self.position = options.position
-	self.slices = {}
-	self.innerCircle = circle(self.position, innerRadius)
-	self.outerCircle = circle(self.position, outerRadius)
 
-	-- Create sprite
-	self.sprite = Sprite.create{
-		spriteSet = "pizza",
-		animation = "complete",
-		group = groups.pizza,
-		position = vec2(100, 100)
+	-- Create text
+	self.text = Text.create{
+		text = 0,
+		position = numberPosition,
+		group = groups.hud,
+		referencePoint = CenterRightReferencePoint,
+		size = numberSize,
+		color = numberColor
 	}
-
-	if config.debug.drawDebug then
-		self.innerCircle:draw{ color = { 255, 0, 0 }}
-		self.outerCircle:draw{ color = { 0, 255, 0 }}
-	end
-
-	-- Bind events
-	Runtime:addEventListener("gestureEnded", self)
 
 	return self
 end
 
 function Class:destroy()
-	Runtime:removeEventListener("gestureEnded", self)
-
-	for index, slice in pairs(self.slices) do
-		slice:destroy()
-	end
-
-	self.outerCircle:destroy()
-	self.innerCircle:destroy()
-	self.sprite:destroy()
+	self.text:destroy()
 
 	utils.deleteObject(self)
 end

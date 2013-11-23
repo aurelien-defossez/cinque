@@ -73,8 +73,11 @@ function Class:draw(options)
 	else
 		self.shape = display.newCircle(self.center.x, self.center.y, self.radius)
 		self.shape:setFillColor(0, 0, 0, 0)
-		self.shape:setStrokeColor(255, 0, 255)
 		self.shape.strokeWidth = 1
+		
+		if options.color then
+			self.shape:setStrokeColor(unpack(options.color))
+		end
 	end
 end
 

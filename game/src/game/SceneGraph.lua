@@ -20,7 +20,9 @@ local audio = require("audio")
 -- Class attributes
 -----------------------------------------------------------------------------------------
 
-
+local scorePosition = vec2(300, 20)
+local scoreSize = 20
+local scoreColor = { 240, 255, 200 }
 
 -----------------------------------------------------------------------------------------
 -- Initialization and Destruction
@@ -48,6 +50,19 @@ function Class.create(options)
 		position = vec2(100, 100)
 	}
 
+	-- Create crowd
+	self.crowd = Crowd.create{}
+
+	-- Create score
+	self.score = Text.create{
+		text = 0,
+		position = scorePosition,
+		group = groups.hud,
+		referencePoint = CenterRightReferencePoint,
+		size = scoreSize,
+		color = scoreColor
+	}
+
 	Runtime:addEventListener("addRogueElement", self)
 	Runtime:addEventListener("removeRogueElement", self)
 	
@@ -67,6 +82,8 @@ function Class:destroy()
 		element:destroy()
 	end
 
+	self.score:destroy()
+	self.crowd:destroy()
 	self.background:destroy()
 	self.pizza:destroy()
 
