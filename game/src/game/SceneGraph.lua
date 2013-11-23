@@ -21,6 +21,7 @@ local audio = require("audio")
 -----------------------------------------------------------------------------------------
 
 
+
 -----------------------------------------------------------------------------------------
 -- Initialization and Destruction
 -----------------------------------------------------------------------------------------
@@ -31,6 +32,16 @@ function Class.create(options)
 	-- Initialize attributes
 	self.gestureDetector = GestureDetector.create()
 	self.rogueElements = {}
+
+	-- Create background
+	self.background = Rectangle.create{
+		width = config.hud.screen.width,
+		height = config.hud.screen.height,
+		group = groups.background,
+		position = vec2(0, 0),
+		referencePoint = display.TopLeftReferencePoint,
+		image = config.paths.game.background
+	}
 
 	-- Create pizzas
 	self.pizza = Pizza.create{
@@ -56,6 +67,7 @@ function Class:destroy()
 		element:destroy()
 	end
 
+	self.background:destroy()
 	self.pizza:destroy()
 
 	utils.deleteObject(self)

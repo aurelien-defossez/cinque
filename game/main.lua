@@ -65,7 +65,9 @@ end
 
 -- Create groups
 groups = {
-	
+	background = display.newGroup(),
+	pizza = display.newGroup(),
+	slices = display.newGroup()
 }
 
 -----------------------------------------------------------------------------------------

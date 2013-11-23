@@ -10,6 +10,10 @@ return {
 		data = "runtimedata.graphics.sprites."
 	},
 
+	game = {
+		background = "runtimedata/graphics/game/background.jpg"
+	},
+
 	-- Masks
 	masks = {
 		cut45 = graphics.newMask("runtimedata/graphics/masks/cut-45.png"),
