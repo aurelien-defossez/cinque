@@ -1,17 +1,17 @@
 -----------------------------------------------------------------------------------------
 --
--- Pizza.lua
+-- Slice.lua
 --
 -----------------------------------------------------------------------------------------
 
 local Class = {}
-Pizza = Class
+Slice = Class
 
 -----------------------------------------------------------------------------------------
 -- Class attributes
 -----------------------------------------------------------------------------------------
 
-local innerRadius = 30
+local offset = vec2(1, 1)
 
 -----------------------------------------------------------------------------------------
 -- Initialization and Destruction
@@ -21,20 +21,18 @@ function Class.create(options)
 	local self = utils.extend(Class)
 
 	-- Initialize attributes
-	self.position = options.position
-	self.slices = {}
+	self.center = options.center
+	self.angle = options.angle
 
 	-- Create sprite
 	self.sprite = Sprite.create{
-		spriteSet = "pizza",
-		animation = "complete",
-		group = groups.pizza,
-		position = vec2(100, 100)
+		spriteSet = "effect",
+		animation = "slice",
+		group = groups.slices,
+		referencePoint = display.BottomCenterReferencePoint,
+		position = self.center + offset:rotate(self.angle),
+		rotation = self.angle
 	}
-
-	if config.debug.drawDebug then
-		circle(self.position, innerRadius):draw()
-	end
 
 	-- Bind events
 	Runtime:addEventListener("gestureEnded", self)
@@ -44,10 +42,6 @@ end
 
 function Class:destroy()
 	Runtime:removeEventListener("gestureEnded", self)
-
-	for index, slice in pairs(self.slices) do
-		slice:destroy()
-	end
 
 	self.sprite:destroy()
 
@@ -61,17 +55,3 @@ end
 -----------------------------------------------------------------------------------------
 -- Event listeners
 -----------------------------------------------------------------------------------------
-
-function Class:gestureEnded(event)
-	local points = event.gesture.points
-	local firstPoint = points[1]
-	local lastPoint = points[#points]
-
-	-- Angle when cutting inward
-	local angle = -(lastPoint - firstPoint):angle()
-
-	self.slices[#self.slices + 1] = Slice.create{
-		center = self.position,
-		angle = angle
-	}
-end
