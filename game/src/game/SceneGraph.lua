@@ -54,6 +54,9 @@ function Class.create(options)
 	self.rogueElements = {}
 	self.currentLevel = 1
 	self.score = 0
+	self.taskHandler = DeferredTaskHandler.create{
+		target = self
+	}
 
 	-- Create background
 	self.background = Rectangle.create{
@@ -114,6 +117,7 @@ function Class:destroy()
 	self.euroText:destroy()
 	self.crowd:destroy()
 	self.background:destroy()
+	self.taskHandler:destroy()
 
 	if self.pizza then
 		self.pizza:destroy()
@@ -176,6 +180,8 @@ function Class:enterFrame(options)
 			element:enterFrame(options)
 		end
 	end
+
+	self.taskHandler:resolveTasks()
 end
 
 -- Add a rogue element to the scene
@@ -239,4 +245,7 @@ function Class:goalAchieved(event)
 			print("Poor")
 		end
 	end
+
+	-- Send next pizza
+	self.taskHandler:addTask("sendPizza")
 end
