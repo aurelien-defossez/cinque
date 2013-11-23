@@ -44,14 +44,12 @@ function Class.create(options)
 	end
 
 	-- Bind events
-	print("bind", self.gestureEnded)
 	Runtime:addEventListener("gestureEnded", self)
 
 	return self
 end
 
 function Class:destroy()
-	print("unbind")
 	Runtime:removeEventListener("gestureEnded", self)
 
 	for index, slice in pairs(self.slices) do
@@ -74,7 +72,6 @@ end
 -----------------------------------------------------------------------------------------
 
 function Class:gestureEnded(event)
-	print("gestureEnded")
 	local points = event.gesture.points
 	local firstPoint = points[1]
 	local lastPoint = points[#points]

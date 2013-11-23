@@ -20,24 +20,23 @@ local audio = require("audio")
 -- Class attributes
 -----------------------------------------------------------------------------------------
 
-local euroPosition = vec2(280, 20)
-local centsPosition = vec2(300, 20)
+local scorePosition = vec2(280, 20)
 local scoreSize = 20
 local scoreColor = { 240, 255, 200 }
 
 local levels = { 2, 3, 4, 5, 6, 7, 8, 9 }
-local tipLimits = { 0.05, 0.15, 0.30 }
+local tipLimits = { 0.02, 0.05, 0.10 }
 local tips = {
-	{ 0.00, 0.00, 0.00 },	-- 1
-	{ 0.05, 0.10, 0.20 },	-- 2
-	{ 0.20, 0.50, 1.00 },	-- 3
-	{ 0.10, 0.10, 0.20 },	-- 4
-	{ 0.50, 1.00, 2.00 },	-- 5
-	{ 0.20, 0.50, 1.00 },	-- 6
-	{ 1.00, 2.00, 5.00 },	-- 7
-	{ 0.20, 0.50, 1.00 },	-- 8
-	{ 1.00, 2.00, 5.00 },	-- 9
-	{ 0.50, 1.00, 2.00 },	-- 10
+	{ 000, 000, 000 },	-- 1
+	{ 005, 010, 020 },	-- 2
+	{ 020, 050, 100 },	-- 3
+	{ 010, 010, 020 },	-- 4
+	{ 050, 100, 200 },	-- 5
+	{ 020, 050, 100 },	-- 6
+	{ 100, 200, 500 },	-- 7
+	{ 020, 050, 100 },	-- 8
+	{ 100, 200, 500 },	-- 9
+	{ 050, 100, 200 },	-- 10
 }
 
 local abs = math.abs
@@ -72,18 +71,10 @@ function Class.create(options)
 	self.crowd = Crowd.create{}
 
 	-- Create score
-	self.euroText = Text.create{
-		position = euroPosition,
+	self.scoreText = Text.create{
+		position = scorePosition,
 		group = groups.hud,
-		referencePoint = CenterRightReferencePoint,
-		size = scoreSize,
-		color = scoreColor
-	}
-
-	self.centsText = Text.create{
-		position = centsPosition,
-		group = groups.hud,
-		referencePoint = CenterRightReferencePoint,
+		referencePoint = display.CenterReferencePoint,
 		size = scoreSize,
 		color = scoreColor
 	}
@@ -113,8 +104,7 @@ function Class:destroy()
 		element:destroy()
 	end
 
-	self.centsText:destroy()
-	self.euroText:destroy()
+	self.scoreText:destroy()
 	self.crowd:destroy()
 	self.background:destroy()
 	self.taskHandler:destroy()
@@ -154,15 +144,17 @@ function Class:increaseScore(value)
 end
 
 function Class:updateScore()
-	local euros = math.floor(self.score)
-	local cents = (self.score - euros) * 100
+	local zeroes = ""
 
-	if cents < 10 then
-		cents = cents.."0"
+	if self.score == math.floor(self.score * 0.1) * 10 then
+		zeroes = zeroes .. "0"
 	end
 
-	self.euroText:setText(euros..",")
-	self.centsText:setText(cents)
+	if self.score == math.floor(self.score * 0.01) * 100 then
+		zeroes = "." .. zeroes .. "0"
+	end
+
+	self.scoreText:setText(self.score * 0.01 .. zeroes)
 end
 
 -----------------------------------------------------------------------------------------
