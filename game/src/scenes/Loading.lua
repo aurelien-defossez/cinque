@@ -13,7 +13,7 @@ local Class = storyboard.newScene()
 -----------------------------------------------------------------------------------------
 
 local classes = {
-	
+	"src.game.SceneGraph"
 }
 
 local phases = {
@@ -125,10 +125,10 @@ function Class:transitionEnd(event)
 		self.fadingIn = false
 		self.phase = 1
 		tnt:newTimer(config.debug.noLoading and 1 or config.hud.loading.idle * 1000, self)
-	elseif config.debug.noLangSelection then
-		storyboard.gotoScene("src.scenes.Welcome")
+	elseif config.debug.noTitleScreen then
+		storyboard.gotoScene("src.scenes.Game")
 	else
-		storyboard.gotoScene("src.scenes.Language")
+		storyboard.gotoScene("src.scenes.Title")
 	end
 end
 

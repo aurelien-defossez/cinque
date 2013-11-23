@@ -1,7 +1,7 @@
-local developmentMode = false
+local developmentMode = true
 
 return {
 	-- Presentation
-	noLoading  = developmentMode and false,
-	noTitleScreen   = developmentMode and false
+	noLoading = developmentMode and true,
+	noTitleScreen = developmentMode and true
 }
