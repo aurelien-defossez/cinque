@@ -160,7 +160,7 @@ local systemEventListener = function(event)
 		math.randomseed(os.time())
 
 		-- Start the multiplayer game
-		-- storyboard.gotoScene("src.scenes.Loading")
+		storyboard.gotoScene("src.scenes.Loading")
 	elseif event.type == "applicationExit" then
 		-- Unload sounds
 		Sound.tearDown()

@@ -28,5 +28,31 @@ return {
 	borders = {
 		width = 105,
 		color = { 0, 0, 0 }
+	},
+
+	buttons = {
+		width = 125,
+		height = 24,
+		strokeWidth = 1,
+		cornerRadius = 3,
+		fontSize = 10,
+		color = { 255, 190, 240 },
+		selectedColor = { 200, 50, 180 },
+		strokeColor = { 200, 50, 180 },
+		selectedStrokeColor = { 255, 180, 40 },
+		textColor = { 40, 40, 40 },
+		selectedTextColor = { 255, 255, 255 }
+	},
+	
+	windows = {
+		xpadding = 5,
+		ypadding = 5,
+		strokeWidth = 2,
+		cornerRadius = 5,
+		titleHeight = 8,
+		fontSize = 12,
+		color = { 240, 90, 230 },
+		strokeColor = { 200, 50, 180 },
+		textColor = { 40, 40, 40 }
 	}
 }
