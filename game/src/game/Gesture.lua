@@ -73,7 +73,9 @@ function Class:touch(event)
 	self.points[#self.points + 1] = point
 
 	if event.phase == "moved" then
-		self.listener:continueGesture(self)
+		if self.listener and self.listener.continueGesture then
+			self.listener:continueGesture(self)
+		end
 	elseif event.phase == "ended" then
 		self:endGesture()
 	elseif event.phase == "cancelled" then

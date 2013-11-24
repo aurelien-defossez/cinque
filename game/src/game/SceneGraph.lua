@@ -28,6 +28,10 @@ local scorePosition = vec2(215, 190)
 local scoreSize = 20
 local scoreColor = { 240, 255, 200 }
 
+local gameOverPosition = vec2(115, config.hud.screen.halfHeight)
+local gameOverSize = 40
+local gameOverTransition = 1.0
+
 local minCrowd = 2
 local maxCrowd = 9
 
@@ -44,6 +48,7 @@ function Class.create(options)
 	local self = utils.extend(Class)
 
 	-- Initialize attributes
+	self.playing = true
 	self.gestureDetector = GestureDetector.create()
 	self.rogueElements = {}
 	self.score = 0
@@ -125,6 +130,10 @@ function Class:destroy()
 		self.pizza:destroy()
 	end
 
+	if self.gameOverText then
+		self.gameOverText:destroy()
+	end
+
 	utils.deleteObject(self)
 end
 
@@ -147,14 +156,30 @@ function Class:sendPizza()
 end
 
 function Class:doSendPizza()
-	self.nbCustomers = math.random(minCrowd, maxCrowd)
+	if self.playing then
+		self.nbCustomers = math.random(minCrowd, maxCrowd)
 
-	-- Create pizza
-	self.pizza = Pizza.create{
-		goal = self.nbCustomers
-	}
+		-- Create pizza
+		self.pizza = Pizza.create{
+			goal = self.nbCustomers
+		}
 
-	self.crowd:setCustomers(self.nbCustomers)
+		self.crowd:setCustomers(self.nbCustomers)
+	else
+		self.gameOverText = OutlineText.create{
+			text = "Game OVer",
+			style = "light",
+			group = groups.hud,
+			position = gameOverPosition,
+			size = gameOverSize
+		}
+
+		self.gameOverText:getDisplayGroup().alpha = 0.0
+		tnt:newTransition(self.gameOverText:getDisplayGroup(), {
+			time = gameOverTransition * 1000,
+			alpha = 1.0
+		})
+	end
 end
 
 function Class:increaseScore(options)
@@ -274,5 +299,5 @@ function Class:goalAchieved(event)
 end
 
 function Class:gameOver(event)
-
+	self.playing = false
 end

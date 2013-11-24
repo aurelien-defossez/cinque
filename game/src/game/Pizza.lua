@@ -72,16 +72,15 @@ function Class.create(options)
 
 	-- Bind events
 	Runtime:addEventListener("gestureStarted", self)
-	Runtime:addEventListener("gameOver", self)
 
 	return self
 end
 
 function Class:destroy()
 	Runtime:removeEventListener("gestureStarted", self)
-	Runtime:removeEventListener("gameOver", self)
 
 	self.transition:cancel()
+	self:disable()
 
 	for index, slice in pairs(self.slices) do
 		slice:destroy()
@@ -89,11 +88,6 @@ function Class:destroy()
 
 	self.plateSprite:destroy()
 	self.pizzasprite:destroy()
-
-	if self.outerCircle then
-		self.outerCircle:destroy()
-		self.innerCircle:destroy()
-	end
 
 	utils.deleteObject(self)
 end
@@ -122,7 +116,7 @@ end
 
 function Class:disable()
 	self.enabled = false
-	
+
 	if self.outerCircle then
 		self.outerCircle:destroy()
 		self.innerCircle:destroy()
@@ -141,7 +135,7 @@ function Class:gestureStarted(event)
 end
 
 function Class:continueGesture(gesture)
-	if #self.slices < self.goal then
+	if self.enabled and #self.slices < self.goal then
 		local points = gesture.points
 		local lastPoint = points[#points]
 		local innerCollision = self.innerCircle:collidePoint(lastPoint)
@@ -199,8 +193,4 @@ function Class:transitionEnd(event)
 	elseif self.phase == "hiding" then
 		self:hideCallback()
 	end
-end
-
-function Class:gameOver(event)
-	self:disable()
 end
