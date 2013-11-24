@@ -214,6 +214,9 @@
             <filename>../sprites/people/adrian_idle.png</filename>
             <filename>../sprites/people/fred_idle.png</filename>
             <filename>../sprites/people/julien_idle.png</filename>
+            <filename>../sprites/people/stephane.png</filename>
+            <filename>../sprites/people/geff_idle.png</filename>
+            <filename>../sprites/people/francois_idle.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

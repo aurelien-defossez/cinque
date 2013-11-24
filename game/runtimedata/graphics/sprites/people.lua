@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker (http://www.codeandweb.com/texturepacker)
 --
--- $TexturePacker:SmartUpdate:79405e2d0e98ad49baad0ce7c2e966d0:e559e47c61113970fba26b4bcd898297:d50e8d26da77ac2f9a8746caa0fb48dd$
+-- $TexturePacker:SmartUpdate:37786aa9ead86a5bc07186546a5e573a:49440f0c2b5843eae278a6b7d382f497:d50e8d26da77ac2f9a8746caa0fb48dd$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -16,8 +16,8 @@ SheetInfo.sheet =
     
         {
             -- adrian_idle
-            x=2,
-            y=410,
+            x=126,
+            y=110,
             width=60,
             height=100,
 
@@ -28,8 +28,8 @@ SheetInfo.sheet =
         },
         {
             -- alex_idle
-            x=70,
-            y=104,
+            x=200,
+            y=2,
             width=50,
             height=100,
 
@@ -39,9 +39,21 @@ SheetInfo.sheet =
             sourceHeight = 100
         },
         {
+            -- francois_idle
+            x=122,
+            y=212,
+            width=58,
+            height=100,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 57,
+            sourceHeight = 100
+        },
+        {
             -- fred_idle
-            x=2,
-            y=104,
+            x=70,
+            y=2,
             width=66,
             height=100,
 
@@ -51,9 +63,21 @@ SheetInfo.sheet =
             sourceHeight = 100
         },
         {
+            -- geff_idle
+            x=62,
+            y=206,
+            width=58,
+            height=100,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 58,
+            sourceHeight = 100
+        },
+        {
             -- julien_idle
             x=64,
-            y=308,
+            y=104,
             width=60,
             height=100,
 
@@ -72,8 +96,8 @@ SheetInfo.sheet =
         },
         {
             -- louisremi_idle
-            x=64,
-            y=410,
+            x=2,
+            y=206,
             width=58,
             height=100,
 
@@ -84,8 +108,8 @@ SheetInfo.sheet =
         },
         {
             -- michael_idle
-            x=70,
-            y=2,
+            x=182,
+            y=212,
             width=56,
             height=100,
 
@@ -96,8 +120,8 @@ SheetInfo.sheet =
         },
         {
             -- sarah_idle
-            x=64,
-            y=206,
+            x=2,
+            y=104,
             width=60,
             height=100,
 
@@ -107,9 +131,21 @@ SheetInfo.sheet =
             sourceHeight = 100
         },
         {
+            -- stephane
+            x=188,
+            y=110,
+            width=58,
+            height=100,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 58,
+            sourceHeight = 100
+        },
+        {
             -- stephane_idle
-            x=2,
-            y=206,
+            x=138,
+            y=2,
             width=60,
             height=106,
 
@@ -120,7 +156,7 @@ SheetInfo.sheet =
         },
     },
     
-    sheetContentWidth = 128,
+    sheetContentWidth = 256,
     sheetContentHeight = 512
 }
 
@@ -129,13 +165,16 @@ SheetInfo.frameIndex =
 
     ["adrian_idle"] = 1,
     ["alex_idle"] = 2,
-    ["fred_idle"] = 3,
-    ["julien_idle"] = 4,
-    ["laurent_idle"] = 5,
-    ["louisremi_idle"] = 6,
-    ["michael_idle"] = 7,
-    ["sarah_idle"] = 8,
-    ["stephane_idle"] = 9,
+    ["francois_idle"] = 3,
+    ["fred_idle"] = 4,
+    ["geff_idle"] = 5,
+    ["julien_idle"] = 6,
+    ["laurent_idle"] = 7,
+    ["louisremi_idle"] = 8,
+    ["michael_idle"] = 9,
+    ["sarah_idle"] = 10,
+    ["stephane"] = 11,
+    ["stephane_idle"] = 12,
 }
 
 function SheetInfo:getSheet()
