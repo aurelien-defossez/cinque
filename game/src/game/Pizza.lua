@@ -25,7 +25,7 @@ local inDuration = 0.5
 local outDuration = 0.5
 
 local innerRadius = 35
-local outerRadius = 75
+local outerRadius = 65
 
 -----------------------------------------------------------------------------------------
 -- Initialization and Destruction

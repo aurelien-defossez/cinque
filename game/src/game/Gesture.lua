@@ -41,7 +41,6 @@ end
 -- Start the gesture
 function Class:start()
 	-- Dispatch event
-	print("dispatchEvent gestureStarted")
 	self:dispatch("gestureStarted")
 end
 
@@ -57,7 +56,6 @@ function Class:dispatch(eventName)
 end
 
 function Class:addListener(listener)
-	print("addListener")
 	self.listener = listener
 end
 
@@ -73,7 +71,6 @@ function Class:touch(event)
 	-- Add point to list & compute total distance
 	local point = vec2(event.x, event.y)
 	self.points[#self.points + 1] = point
-	print("touch", event.phase)
 
 	if event.phase == "moved" then
 		self.listener:continueGesture(self)

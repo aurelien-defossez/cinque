@@ -60,14 +60,6 @@ return {
 		font = "Pizza by Alfredo",
 		shadows = {
 			{
-				factorOffset = vec2(-.05, -.05),
-			}, {
-				factorOffset = vec2(-.05, .05),
-			}, {
-				factorOffset = vec2(.05, -.05),
-			}, {
-				factorOffset = vec2(.05, .05),
-			}, {
 				factorOffset = vec2(-.05, 0),
 			}, {
 				factorOffset = vec2(.05, 0),
