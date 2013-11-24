@@ -207,6 +207,7 @@
         <array>
             <filename>../sprites/main/pizza_complete.png</filename>
             <filename>../sprites/main/effect_slice.png</filename>
+            <filename>../sprites/main/plate_idle.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

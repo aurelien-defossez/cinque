@@ -11,6 +11,9 @@ Pizza = Class
 -- Class attributes
 -----------------------------------------------------------------------------------------
 
+local platePosition = vec2(100, 100)
+local pizzaPosition = vec2(135, 100)
+
 local innerRadius = 30
 local outerRadius = 75
 
@@ -31,12 +34,19 @@ function Class.create(options)
 	self.innerCircle = circle(self.position, innerRadius)
 	self.outerCircle = circle(self.position, outerRadius)
 
-	-- Create sprite
-	self.sprite = Sprite.create{
+	-- Create sprites
+	self.plateSprite = Sprite.create{
+		spriteSet = "plate",
+		animation = "idle",
+		group = groups.pizza,
+		position = platePosition
+	}
+
+	self.pizzasprite = Sprite.create{
 		spriteSet = "pizza",
 		animation = "complete",
 		group = groups.pizza,
-		position = vec2(100, 100)
+		position = pizzaPosition
 	}
 
 	if config.debug.drawDebug then
@@ -57,7 +67,7 @@ function Class:destroy()
 		slice:destroy()
 	end
 
-	self.sprite:destroy()
+	self.pizzasprite:destroy()
 	self.outerCircle:destroy()
 	self.innerCircle:destroy()
 

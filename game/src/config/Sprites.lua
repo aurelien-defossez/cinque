@@ -20,9 +20,14 @@ config = config or {}
 return {
 	sheets = {
 		main = {
+			plate = {
+				idle = {}
+			},
+
 			pizza = {
 				complete = {}
 			},
+
 			effect = {
 				slice = {}
 			}
