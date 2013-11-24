@@ -75,9 +75,6 @@ function Class.create(options)
 		image = config.paths.game.foreground
 	}
 
-	-- Create crowd
-	self.crowd = Crowd.create{}
-
 	-- Create timer
 	self.timer = Timer.create{}
 
@@ -121,13 +118,16 @@ function Class:destroy()
 	end
 
 	self.scoreText:destroy()
-	self.crowd:destroy()
 	self.foreground:destroy()
 	self.background:destroy()
 	self.taskHandler:destroy()
 
 	if self.pizza then
 		self.pizza:destroy()
+	end
+
+	if self.crowd then
+		self.crowd:destroy()
 	end
 
 	if self.gameOverText then
@@ -144,6 +144,8 @@ end
 function Class:sendPizza()
 	-- Cleaning
 	if self.pizza then
+		self.crowd:hide()
+
 		self.pizza:hide{
 			onHide = function()
 				self.pizza:destroy()
@@ -164,7 +166,10 @@ function Class:doSendPizza()
 			goal = self.nbCustomers
 		}
 
-		self.crowd:setCustomers(self.nbCustomers)
+		-- Create crowd
+		self.crowd = Crowd.create{
+			number = self.nbCustomers
+		}
 	else
 		self.gameOverText = OutlineText.create{
 			text = "Game OVer",

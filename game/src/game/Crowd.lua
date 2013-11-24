@@ -11,20 +11,26 @@ Crowd = Class
 -- Class attributes
 -----------------------------------------------------------------------------------------
 
+local startPosition = vec2(100, 100)
+local idlePosition = vec2(200, 100)
+local endPosition = vec2(400, 100)
+local inTransition = 1.0
+local outTransition = 0.75
+
 local numberPosition = vec2(280, 70)
 local numberSize = 96
 local numberColor = { 50, 50, 50 }
 
 local positions = {
-	vec2(225, 123),
-	vec2(245, 125),
-	vec2(288, 128),
-	vec2(310, 135),
-	vec2(266, 130),
-	vec2(245, 150),
-	vec2(280, 155),
-	vec2(300, 160),
-	vec2(260, 165)
+	vec2(25, 23),
+	vec2(45, 25),
+	vec2(88, 28),
+	vec2(110, 35),
+	vec2(66, 30),
+	vec2(45, 50),
+	vec2(80, 55),
+	vec2(100, 60),
+	vec2(60, 65)
 }
 
 local people = {
@@ -49,22 +55,13 @@ function Class.create(options)
 	-- Initialize attributes
 	self.persons = {}
 
-	return self
-end
+	-- Create group
+	self.group = display.newGroup()
+	self.group.x = startPosition.x
+	self.group.y = startPosition.y
+	groups.crowd:insert(self.group)
 
-function Class:destroy()
-	self:removeCustomers()
-
-	utils.deleteObject(self)
-end
-
------------------------------------------------------------------------------------------
--- Methods
------------------------------------------------------------------------------------------
-
-function Class:setCustomers(number)
-	self:removeCustomers()
-
+	local number = options.number
 	local currentPositions = {}
 	local currentPeople = {}
 	local peopleAssoc = {}
@@ -101,47 +98,55 @@ function Class:setCustomers(number)
 		self.persons[#self.persons + 1] = Sprite.create{
 			spriteSet = currentPeople[i],
 			animation = "idle",
-			group = groups.crowd,
+			group = self.group,
 			position = positions[j],
 			referencePoint = display.BottomCenterReferencePoint
 		}
 	end
+
+	-- Transition
+	self.transition = tnt:newTransition(self.group, {
+		time = inTransition * 1000,
+		x = idlePosition.x,
+		y = idlePosition.y
+	})
+
+	return self
 end
 
-function Class:removeCustomers()
+function Class:destroy()
+	if self.transition then
+		self.transition:cancel()
+	end
+
 	for index, person in pairs(self.persons) do
 		person:destroy()
 	end
 
-	self.persons = {}
+	utils.deleteObject(self)
+end
+
+-----------------------------------------------------------------------------------------
+-- Methods
+-----------------------------------------------------------------------------------------
+
+function Class:hide()
+	if self.transition then
+		self.transition:cancel()
+	end
+
+	-- Transition
+	self.transition = tnt:newTransition(self.group, {
+		time = outTransition * 1000,
+		x = endPosition.x,
+		y = endPosition.y,
+		onEnd = function(event)
+			self:destroy()
+		end
+	})
 end
 
 -----------------------------------------------------------------------------------------
 -- Event listeners
 -----------------------------------------------------------------------------------------
 
-function Class:gestureEnded(event)
-	local points = event.gesture.points
-	local firstPoint = points[1]
-	local lastPoint = points[#points]
-	local sliced = false
-	local angle
-
-	-- Detect inward cutting
-	if not self.outerCircle:collidePoint(firstPoint) and self.innerCircle:collidePoint(lastPoint) then
-		sliced = true
-		angle = -(lastPoint - firstPoint):angle()
-
-	-- Detect outward cutting
-	elseif self.innerCircle:collidePoint(firstPoint) and not self.outerCircle:collidePoint(lastPoint) then
-		sliced = true
-		angle = -(lastPoint - firstPoint):angle() + 180
-	end
-
-	if sliced then
-		self.slices[#self.slices + 1] = Slice.create{
-			center = self.position,
-			angle = angle
-		}
-	end
-end
