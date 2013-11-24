@@ -39,7 +39,31 @@ return {
 		},
 
 		people = {
+			adrian = {
+				idle = {}
+			},
 			alex = {
+				idle = {}
+			},
+			fred = {
+				idle = {}
+			},
+			julien = {
+				idle = {}
+			},
+			laurent = {
+				idle = {}
+			},
+			louisremi = {
+				idle = {}
+			},
+			michael = {
+				idle = {}
+			},
+			sarah = {
+				idle = {}
+			},
+			stephane = {
 				idle = {}
 			}
 		}

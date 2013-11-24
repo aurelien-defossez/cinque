@@ -206,6 +206,14 @@
         <key>fileList</key>
         <array>
             <filename>../sprites/people/alex_idle.png</filename>
+            <filename>../sprites/people/michael_idle.png</filename>
+            <filename>../sprites/people/laurent_idle.png</filename>
+            <filename>../sprites/people/louisremi_idle.png</filename>
+            <filename>../sprites/people/sarah_idle.png</filename>
+            <filename>../sprites/people/stephane_idle.png</filename>
+            <filename>../sprites/people/adrian_idle.png</filename>
+            <filename>../sprites/people/fred_idle.png</filename>
+            <filename>../sprites/people/julien_idle.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

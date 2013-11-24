@@ -16,15 +16,27 @@ local numberSize = 96
 local numberColor = { 50, 50, 50 }
 
 local positions = {
-	vec2(225, 73),
-	vec2(245, 75),
-	vec2(288, 78),
-	vec2(310, 85),
-	vec2(266, 80),
-	vec2(245, 100),
-	vec2(280, 105),
-	vec2(300, 110),
-	vec2(260, 115)
+	vec2(225, 123),
+	vec2(245, 125),
+	vec2(288, 128),
+	vec2(310, 135),
+	vec2(266, 130),
+	vec2(245, 150),
+	vec2(280, 155),
+	vec2(300, 160),
+	vec2(260, 165)
+}
+
+local people = {
+	"adrian",
+	"alex",
+	"fred",
+	"julien",
+	"laurent",
+	"louisremi",
+	"michael",
+	"sarah",
+	"stephane"
 }
 
 -----------------------------------------------------------------------------------------
@@ -54,7 +66,10 @@ function Class:setCustomers(number)
 	self:removeCustomers()
 
 	local currentPositions = {}
+	local currentPeople = {}
+	local peopleAssoc = {}
 	local positionsFound = 0
+	local peopleFound = 0
 
 	-- Define current positions
 	while positionsFound < number do
@@ -66,6 +81,17 @@ function Class:setCustomers(number)
 		end
 	end
 
+	-- Define people
+	while peopleFound < number do
+		local random = people[math.random(#people)]
+
+		if not peopleAssoc[random] then
+			peopleFound = peopleFound + 1
+			currentPeople[#currentPeople + 1] = random
+			peopleAssoc[random] = true
+		end
+	end
+
 	local j = 0
 	for i = 1, number do
 		repeat
@@ -73,10 +99,11 @@ function Class:setCustomers(number)
 		until currentPositions[j]
 
 		self.persons[#self.persons + 1] = Sprite.create{
-			spriteSet = "alex",
+			spriteSet = currentPeople[i],
 			animation = "idle",
 			group = groups.crowd,
-			position = positions[j]
+			position = positions[j],
+			referencePoint = display.BottomCenterReferencePoint
 		}
 	end
 end
