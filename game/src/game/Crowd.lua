@@ -54,6 +54,7 @@ function Class.create(options)
 
 	-- Initialize attributes
 	self.persons = {}
+	self.happyPeople = {}
 
 	-- Create group
 	self.group = display.newGroup()
@@ -111,10 +112,15 @@ function Class.create(options)
 		y = idlePosition.y
 	})
 
+	-- Bind events
+	Runtime:addEventListener("happyFace", self)
+
 	return self
 end
 
 function Class:destroy()
+	Runtime:removeEventListener("happyFace", self)
+
 	if self.transition then
 		self.transition:cancel()
 	end
@@ -150,3 +156,13 @@ end
 -- Event listeners
 -----------------------------------------------------------------------------------------
 
+function Class:happyFace(event)
+	local rand
+
+	repeat
+		rand = math.random(#self.persons)
+	until not self.happyPeople[rand]
+
+	self.happyPeople[rand] = true
+	self.persons[rand]:play("happy")
+end

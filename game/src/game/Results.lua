@@ -137,6 +137,12 @@ function Class:showResult(options)
 			}
 		end
 
+		if options.parameters.rating <= 2 then
+			Runtime:dispatchEvent{
+				name = "happyFace"
+			}
+		end
+
 		self.texts[options.parameters.index] = text
 	end
 

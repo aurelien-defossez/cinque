@@ -214,9 +214,19 @@
             <filename>../sprites/people/adrian_idle.png</filename>
             <filename>../sprites/people/fred_idle.png</filename>
             <filename>../sprites/people/julien_idle.png</filename>
-            <filename>../sprites/people/stephane.png</filename>
             <filename>../sprites/people/geff_idle.png</filename>
             <filename>../sprites/people/francois_idle.png</filename>
+            <filename>../sprites/people/louisremi_happy.png</filename>
+            <filename>../sprites/people/michael_happy.png</filename>
+            <filename>../sprites/people/sarah_happy.png</filename>
+            <filename>../sprites/people/stephane_happy.png</filename>
+            <filename>../sprites/people/geff_happy.png</filename>
+            <filename>../sprites/people/adrian_happy.png</filename>
+            <filename>../sprites/people/alex_happy.png</filename>
+            <filename>../sprites/people/francois_happy.png</filename>
+            <filename>../sprites/people/fred_happy.png</filename>
+            <filename>../sprites/people/julien_happy.png</filename>
+            <filename>../sprites/people/laurent_happy.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

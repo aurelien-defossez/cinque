@@ -40,31 +40,40 @@ return {
 
 		people = {
 			adrian = {
-				idle = {}
+				idle = {},
+				happy = {}
 			},
 			alex = {
-				idle = {}
+				idle = {},
+				happy = {}
 			},
 			fred = {
-				idle = {}
+				idle = {},
+				happy = {}
 			},
 			julien = {
-				idle = {}
+				idle = {},
+				happy = {}
 			},
 			laurent = {
-				idle = {}
+				idle = {},
+				happy = {}
 			},
 			louisremi = {
-				idle = {}
+				idle = {},
+				happy = {}
 			},
 			michael = {
-				idle = {}
+				idle = {},
+				happy = {}
 			},
 			sarah = {
-				idle = {}
+				idle = {},
+				happy = {}
 			},
 			stephane = {
-				idle = {}
+				idle = {},
+				happy = {}
 			}
 		}
 	},
