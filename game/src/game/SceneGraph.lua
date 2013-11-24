@@ -32,8 +32,7 @@ local gameOverPosition = vec2(115, config.hud.screen.halfHeight)
 local gameOverSize = 40
 local gameOverTransition = 1.0
 
-local minCrowd = 2
-local maxCrowd = 9
+local crowdProba = { 0, 5, 10, 7, 10, 8, 5, 4, 3 }
 
 local tipAngleLimits = { 4, 8, 12 }
 local tipPercentLimits = { 0.05, 0.10, 0.20 }
@@ -55,6 +54,12 @@ function Class.create(options)
 	self.taskHandler = DeferredTaskHandler.create{
 		target = self
 	}
+
+	-- Compute proba
+	self.probaTotal = 0
+	for index, proba in pairs(crowdProba) do
+		self.probaTotal = self.probaTotal + proba
+	end
 
 	-- Create background
 	self.background = Rectangle.create{
@@ -159,7 +164,16 @@ end
 
 function Class:doSendPizza()
 	if self.playing then
-		self.nbCustomers = math.random(minCrowd, maxCrowd)
+		local rand = math.random(self.probaTotal)
+		local probaSum = 0
+		for index, proba in pairs(crowdProba) do
+			probaSum = probaSum + proba
+
+			if rand <= probaSum then
+				self.nbCustomers = index
+				break
+			end
+		end
 
 		-- Create pizza
 		self.pizza = Pizza.create{
