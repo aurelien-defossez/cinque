@@ -17,7 +17,7 @@ local startRotation = 0
 local idlePosition = vec2(135, 100)
 local idleRotation = 0
 
-local endPosition = vec2(0, 300)
+local endPosition = vec2(-30, 350)
 local endRotation = 45
 
 local plateOffset = vec2(-35, 0)
@@ -85,6 +85,7 @@ function Class:destroy()
 		slice:destroy()
 	end
 
+	self.plateSprite:destroy()
 	self.pizzasprite:destroy()
 
 	if self.outerCircle then
@@ -138,43 +139,45 @@ function Class:gestureStarted(event)
 end
 
 function Class:continueGesture(gesture)
-	local points = gesture.points
-	local lastPoint = points[#points]
-	local innerCollision = self.innerCircle:collidePoint(lastPoint)
-	local outerCollision = self.outerCircle:collidePoint(lastPoint)
+	if #self.slices < self.goal then
+		local points = gesture.points
+		local lastPoint = points[#points]
+		local innerCollision = self.innerCircle:collidePoint(lastPoint)
+		local outerCollision = self.outerCircle:collidePoint(lastPoint)
 
-	if not gesture.started then
-		if innerCollision then
-			gesture.started = true
-			gesture.phasePoint = lastPoint
-			gesture.direction = "out"
-		elseif outerCollision and #points > 1 and not self.outerCircle:collidePoint(points[#points - 1]) then
-			gesture.started = true
-			gesture.phasePoint = lastPoint
-			gesture.direction = "in"
+		if not gesture.started then
+			if innerCollision then
+				gesture.started = true
+				gesture.phasePoint = lastPoint
+				gesture.direction = "out"
+			elseif outerCollision and #points > 1 and not self.outerCircle:collidePoint(points[#points - 1]) then
+				gesture.started = true
+				gesture.phasePoint = lastPoint
+				gesture.direction = "in"
+			end
 		end
-	end
 
-	if gesture.started then
-		if gesture.direction == "out" and not outerCollision then
-			gesture.started = false
-			self.slices[#self.slices + 1] = Slice.create{
-				angle = -(lastPoint - idlePosition):angle() + 180,
-				group = self.group
-			}
-		elseif gesture.direction == "in" and innerCollision then
-			gesture.started = false
-			self.slices[#self.slices + 1] = Slice.create{
-				angle = -(lastPoint - gesture.phasePoint):angle(),
-				group = self.group
-			}
-		end
-		
-		if #self.slices == self.goal then
-			Runtime:dispatchEvent{
-				name = "goalAchieved",
-				slices = self.slices
-			}
+		if gesture.started then
+			if gesture.direction == "out" and not outerCollision then
+				gesture.started = false
+				self.slices[#self.slices + 1] = Slice.create{
+					angle = -(lastPoint - idlePosition):angle() + 180,
+					group = self.group
+				}
+			elseif gesture.direction == "in" and innerCollision then
+				gesture.started = false
+				self.slices[#self.slices + 1] = Slice.create{
+					angle = -(lastPoint - gesture.phasePoint):angle(),
+					group = self.group
+				}
+			end
+
+			if #self.slices == self.goal then
+				Runtime:dispatchEvent{
+					name = "goalAchieved",
+					slices = self.slices
+				}
+			end
 		end
 	end
 end

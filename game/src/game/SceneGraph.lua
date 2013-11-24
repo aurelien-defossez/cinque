@@ -26,18 +26,6 @@ local scoreColor = { 240, 255, 200 }
 
 local levels = { 3, 4, 5, 6, 7, 8, 9 }
 local tipLimits = { 0.05, 0.10, 0.20 }
-local tips = {
-	{ 000, 000, 000 },	-- 1
-	{ 020, 010, 005 },	-- 2
-	{ 100, 050, 020 },	-- 3
-	{ 020, 010, 010 },	-- 4
-	{ 200, 100, 050 },	-- 5
-	{ 100, 050, 020 },	-- 6
-	{ 500, 200, 100 },	-- 7
-	{ 100, 050, 020 },	-- 8
-	{ 500, 200, 100 },	-- 9
-	{ 200, 100, 050 },	-- 10
-}
 
 local abs = math.abs
 
@@ -86,6 +74,7 @@ function Class.create(options)
 	Runtime:addEventListener("addRogueElement", self)
 	Runtime:addEventListener("removeRogueElement", self)
 	Runtime:addEventListener("goalAchieved", self)
+	Runtime:addEventListener("increaseScore", self)
 	
 	return self
 end
@@ -95,6 +84,7 @@ function Class:destroy()
 	Runtime:removeEventListener("addRogueElement", self)
 	Runtime:removeEventListener("removeRogueElement", self)
 	Runtime:removeEventListener("goalAchieved", self)
+	Runtime:removeEventListener("increaseScore", self)
 
 	-- Stop all sounds
 	audio.stop()
@@ -146,8 +136,8 @@ function Class:doSendPizza()
 	self.currentLevel = self.currentLevel + 1
 end
 
-function Class:increaseScore(value)
-	self.score = self.score + value
+function Class:increaseScore(options)
+	self.score = self.score + options.value
 	self:updateScore()
 end
 
