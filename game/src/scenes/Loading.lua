@@ -32,7 +32,7 @@ local phases = {
 	"images"
 }
 
-local sheets = { "main" }
+local sheets = { "main", "people" }
 
 local images = {
 	config.paths.scenes.logo,

@@ -15,6 +15,18 @@ local numberPosition = vec2(280, 70)
 local numberSize = 96
 local numberColor = { 50, 50, 50 }
 
+local positions = {
+	vec2(225, 73),
+	vec2(245, 75),
+	vec2(288, 78),
+	vec2(310, 85),
+	vec2(266, 80),
+	vec2(245, 100),
+	vec2(280, 105),
+	vec2(300, 110),
+	vec2(260, 115)
+}
+
 -----------------------------------------------------------------------------------------
 -- Initialization and Destruction
 -----------------------------------------------------------------------------------------
@@ -23,23 +35,12 @@ function Class.create(options)
 	local self = utils.extend(Class)
 
 	-- Initialize attributes
-
-	-- Create text
-	self.text = Text.create{
-		text = 0,
-		position = numberPosition,
-		group = groups.hud,
-		referencePoint = CenterRightReferencePoint,
-		size = numberSize,
-		color = numberColor
-	}
+	self.persons = {}
 
 	return self
 end
 
 function Class:destroy()
-	self.text:destroy()
-
 	utils.deleteObject(self)
 end
 
@@ -48,7 +49,32 @@ end
 -----------------------------------------------------------------------------------------
 
 function Class:setCustomers(number)
-	self.text:setText(number)
+	local currentPositions = {}
+	local positionsFound = 0
+
+	-- Define current positions
+	while positionsFound < number do
+		local random = math.random(#positions)
+
+		if not currentPositions[random] then
+			positionsFound = positionsFound + 1
+			currentPositions[random] = true
+		end
+	end
+
+	local j = 0
+	for i = 1, number do
+		repeat
+			j = j + 1
+		until currentPositions[j]
+
+		local person = Sprite.create{
+			spriteSet = "alex",
+			animation = "idle",
+			group = groups.crowd,
+			position = positions[j]
+		}
+	end
 end
 
 -----------------------------------------------------------------------------------------

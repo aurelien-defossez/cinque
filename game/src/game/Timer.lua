@@ -24,6 +24,7 @@ function Class.create(options)
 	local self = utils.extend(Class)
 
 	-- Initialize attributes
+	self.enabled = true
 	self.time = startTime
 
 	-- Create sprite
@@ -65,8 +66,17 @@ end
 -----------------------------------------------------------------------------------------
 
 function Class:ecussonEnterFrame(options)
-	if not options.paused then
+	if self.enabled and not options.paused then
 		self.time = self.time - options.dt
+
+		if self.time <= 0 then
+			self.time = 0
+			self.enabled = false
+
+			Runtime:dispatchEvent{
+				name = "gameOver"
+			}
+		end
 
 		self.tick:setRotation(self.time / startTime * 360)
 	end

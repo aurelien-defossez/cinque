@@ -72,12 +72,14 @@ function Class.create(options)
 
 	-- Bind events
 	Runtime:addEventListener("gestureStarted", self)
+	Runtime:addEventListener("gameOver", self)
 
 	return self
 end
 
 function Class:destroy()
 	Runtime:removeEventListener("gestureStarted", self)
+	Runtime:removeEventListener("gameOver", self)
 
 	self.transition:cancel()
 
@@ -110,15 +112,8 @@ end
 
 function Class:hide(options)
 	self.hideCallback = options.onHide
-
 	self.phase = "hiding"
-
-	if self.outerCircle then
-		self.outerCircle:destroy()
-		self.innerCircle:destroy()
-		self.outerCircle = nil
-		self.innerCircle = nil
-	end
+	self:disable()
 
 	self.transition = tnt:newTransition(self.group, {
 		time = outDuration * 1000,
@@ -127,6 +122,15 @@ function Class:hide(options)
 		rotation = endRotation,
 		onEnd = self
 	})
+end
+
+function Class:disable()
+	if self.outerCircle then
+		self.outerCircle:destroy()
+		self.innerCircle:destroy()
+		self.outerCircle = nil
+		self.innerCircle = nil
+	end
 end
 
 -----------------------------------------------------------------------------------------
@@ -197,4 +201,8 @@ function Class:transitionEnd(event)
 	elseif self.phase == "hiding" then
 		self:hideCallback()
 	end
+end
+
+function Class:gameOver(event)
+	self:disable()
 end

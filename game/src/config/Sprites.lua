@@ -36,6 +36,12 @@ return {
 			effect = {
 				slice = {}
 			}
+		},
+
+		people = {
+			alex = {
+				idle = {}
+			}
 		}
 	},
 

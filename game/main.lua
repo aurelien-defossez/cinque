@@ -66,6 +66,7 @@ end
 -- Create groups
 groups = {
 	background = display.newGroup(),
+	crowd = display.newGroup(),
 	foreground = display.newGroup(),
 	timer = display.newGroup(),
 	pizza = display.newGroup(),

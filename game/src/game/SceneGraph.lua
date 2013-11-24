@@ -24,7 +24,7 @@ local backgroundWidth = 200
 local backgroundHeight = 133
 local backgroundOffset = vec2(180, 0)
 
-local scorePosition = vec2(280, 20)
+local scorePosition = vec2(215, 190)
 local scoreSize = 20
 local scoreColor = { 240, 255, 200 }
 
@@ -93,6 +93,7 @@ function Class.create(options)
 	Runtime:addEventListener("removeRogueElement", self)
 	Runtime:addEventListener("goalAchieved", self)
 	Runtime:addEventListener("increaseScore", self)
+	Runtime:addEventListener("gameOver", self)
 	
 	return self
 end
@@ -103,6 +104,7 @@ function Class:destroy()
 	Runtime:removeEventListener("removeRogueElement", self)
 	Runtime:removeEventListener("goalAchieved", self)
 	Runtime:removeEventListener("increaseScore", self)
+	Runtime:removeEventListener("gameOver", self)
 
 	-- Stop all sounds
 	audio.stop()
@@ -268,4 +270,8 @@ function Class:goalAchieved(event)
 			self.taskHandler:addTask("sendPizza")
 		end
 	}
+end
+
+function Class:gameOver(event)
+
 end
