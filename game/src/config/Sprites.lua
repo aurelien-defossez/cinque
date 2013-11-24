@@ -28,6 +28,11 @@ return {
 				complete = {}
 			},
 
+			timer = {
+				background = {},
+				tick = {}
+			},
+
 			effect = {
 				slice = {}
 			}

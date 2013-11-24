@@ -18,6 +18,7 @@ local classes = {
 	"src.game.Pizza",
 	"src.game.Slice",
 	"src.game.Crowd",
+	"src.game.Timer",
 	"src.game.SceneGraph",
 	"src.game.GestureDetector",
 	"src.game.Gesture",

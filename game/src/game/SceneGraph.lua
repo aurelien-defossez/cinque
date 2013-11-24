@@ -72,6 +72,9 @@ function Class.create(options)
 	-- Create crowd
 	self.crowd = Crowd.create{}
 
+	-- Create timer
+	self.timer = Timer.create{}
+
 	-- Create score
 	self.scoreText = OutlineText.create{
 		style = "light",

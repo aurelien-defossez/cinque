@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker (http://www.codeandweb.com/texturepacker)
 --
--- $TexturePacker:SmartUpdate:580d861b5554b72e9f9384b8c1cd0433:b07d98abd604c19c2364613453ff83f6:7b91f048090ec15651888590f1f35b23$
+-- $TexturePacker:SmartUpdate:4ee93a307aafabb0838533be7bc9d129:b76daeb2bda2a68557742ac78186e375:7b91f048090ec15651888590f1f35b23$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -46,6 +46,30 @@ SheetInfo.sheet =
             sourceWidth = 524,
             sourceHeight = 339
         },
+        {
+            -- timer_background
+            x=12,
+            y=348,
+            width=108,
+            height=116,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 105,
+            sourceHeight = 113
+        },
+        {
+            -- timer_tick
+            x=124,
+            y=348,
+            width=16,
+            height=52,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 16,
+            sourceHeight = 50
+        },
     },
     
     sheetContentWidth = 1024,
@@ -58,6 +82,8 @@ SheetInfo.frameIndex =
     ["effect_slice"] = 1,
     ["pizza_complete"] = 2,
     ["plate_idle"] = 3,
+    ["timer_background"] = 4,
+    ["timer_tick"] = 5,
 }
 
 function SheetInfo:getSheet()

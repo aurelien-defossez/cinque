@@ -67,6 +67,7 @@ end
 groups = {
 	background = display.newGroup(),
 	foreground = display.newGroup(),
+	timer = display.newGroup(),
 	pizza = display.newGroup(),
 	hud = display.newGroup()
 }
