@@ -54,5 +54,48 @@ return {
 		color = { 240, 90, 230 },
 		strokeColor = { 200, 50, 180 },
 		textColor = { 40, 40, 40 }
-	}
+	},
+
+	outline = {
+		font = "Pizza by Alfredo",
+		shadows = {
+			{
+				factorOffset = vec2(-.05, -.05),
+			}, {
+				factorOffset = vec2(-.05, .05),
+			}, {
+				factorOffset = vec2(.05, -.05),
+			}, {
+				factorOffset = vec2(.05, .05),
+			}, {
+				factorOffset = vec2(-.05, 0),
+			}, {
+				factorOffset = vec2(.05, 0),
+			}, {
+				factorOffset = vec2(0, -.05),
+			}, {
+				factorOffset = vec2(0, .05),
+			}
+		},
+		light = {
+			color = { 254, 228, 158 },
+			borderColor = { 128, 93, 80 }
+		},
+		perfect = {
+			color = { 28, 232, 45 },
+			borderColor = { 30, 30, 30 }
+		},
+		good = {
+			color = { 222, 232, 28 },
+			borderColor = { 30, 30, 30 }
+		},
+		ok = {
+			color = { 200, 198, 247 },
+			borderColor = { 30, 30, 30 }
+		},
+		poor = {
+			color = { 178, 77, 84 },
+			borderColor = { 30, 30, 30 }
+		}
+	},
 }

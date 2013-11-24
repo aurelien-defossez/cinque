@@ -59,7 +59,8 @@ function Class.create(options)
 	self.crowd = Crowd.create{}
 
 	-- Create score
-	self.scoreText = Text.create{
+	self.scoreText = OutlineText.create{
+		style = "light",
 		position = scorePosition,
 		group = groups.hud,
 		referencePoint = display.CenterReferencePoint,

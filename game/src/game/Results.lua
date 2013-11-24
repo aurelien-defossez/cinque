@@ -21,11 +21,11 @@ local texts = {
 	"Poor"
 }
 
-local colors = {
-	{ 28, 232, 45 },
-	{ 222, 232, 28 },
-	{ 200, 198, 247 },
-	{ 247, 198, 198 }
+local styles = {
+	"perfect",
+	"good",
+	"ok",
+	"poor"
 }
 
 local sizes = {
@@ -122,9 +122,9 @@ end
 
 function Class:showResult(options)
 	if options.firstFrame then
-		local text = Text.create{
+		local text = OutlineText.create{
+			style = styles[options.parameters.rating],
 			text = texts[options.parameters.rating],
-			color = colors[options.parameters.rating],
 			size = sizes[options.parameters.rating],
 			group = groups.hud,
 			position = self.position + vec2(0, -1):rotate(options.parameters.angle) * textDistance
