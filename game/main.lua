@@ -67,7 +67,6 @@ end
 groups = {
 	background = display.newGroup(),
 	pizza = display.newGroup(),
-	slices = display.newGroup(),
 	hud = display.newGroup()
 }
 

@@ -23,7 +23,6 @@ local audio = require("audio")
 local scorePosition = vec2(280, 20)
 local scoreSize = 20
 local scoreColor = { 240, 255, 200 }
-local pizzaPosition = vec2(135, 100)
 
 local levels = { 3, 4, 5, 6, 7, 8, 9 }
 local tipLimits = { 0.05, 0.10, 0.20 }
@@ -122,16 +121,24 @@ end
 -----------------------------------------------------------------------------------------
 
 function Class:sendPizza()
-	self.nbCustomers = levels[self.currentLevel]
-
 	-- Cleaning
 	if self.pizza then
-		self.pizza:destroy()
+		self.pizza:hide{
+			onHide = function()
+				self.pizza:destroy()
+				self:doSendPizza()
+			end
+		}
+	else
+		self:doSendPizza()
 	end
+end
+
+function Class:doSendPizza()
+	self.nbCustomers = levels[self.currentLevel]
 
 	-- Create pizza
 	self.pizza = Pizza.create{
-		position = pizzaPosition,
 		goal = self.nbCustomers
 	}
 
@@ -248,7 +255,7 @@ function Class:goalAchieved(event)
 	-- Show results
 	Results.create{
 		results = results,
-		position = self.pizza.position,
+		position = self.pizza:getPosition(),
 		onFinished = function()
 			self.taskHandler:addTask("sendPizza")
 		end

@@ -28,9 +28,9 @@ function Class.create(options)
 	self.sprite = Sprite.create{
 		spriteSet = "effect",
 		animation = "slice",
-		group = groups.slices,
+		group = options.group,
 		referencePoint = display.BottomCenterReferencePoint,
-		position = self.center + offset:rotate(self.angle),
+		position = offset:rotate(self.angle),
 		rotation = self.angle
 	}
 
