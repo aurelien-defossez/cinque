@@ -28,7 +28,9 @@ local scorePosition = vec2(280, 20)
 local scoreSize = 20
 local scoreColor = { 240, 255, 200 }
 
-local levels = { 3, 4, 5, 6, 7, 8, 9 }
+local minCrowd = 2
+local maxCrowd = 9
+
 local tipLimits = { 0.05, 0.10, 0.20 }
 
 local abs = math.abs
@@ -43,7 +45,6 @@ function Class.create(options)
 	-- Initialize attributes
 	self.gestureDetector = GestureDetector.create()
 	self.rogueElements = {}
-	self.currentLevel = 1
 	self.score = 0
 	self.taskHandler = DeferredTaskHandler.create{
 		target = self
@@ -140,7 +141,7 @@ function Class:sendPizza()
 end
 
 function Class:doSendPizza()
-	self.nbCustomers = levels[self.currentLevel]
+	self.nbCustomers = math.random(minCrowd, maxCrowd)
 
 	-- Create pizza
 	self.pizza = Pizza.create{
@@ -148,7 +149,6 @@ function Class:doSendPizza()
 	}
 
 	self.crowd:setCustomers(self.nbCustomers)
-	self.currentLevel = self.currentLevel + 1
 end
 
 function Class:increaseScore(options)
