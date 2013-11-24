@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker (http://www.codeandweb.com/texturepacker)
 --
--- $TexturePacker:SmartUpdate:a119ab0cef1d798aa49a5d85a571e3e1:949890b4f65d8fb5281f28912b715099:7b91f048090ec15651888590f1f35b23$
+-- $TexturePacker:SmartUpdate:580d861b5554b72e9f9384b8c1cd0433:b07d98abd604c19c2364613453ff83f6:7b91f048090ec15651888590f1f35b23$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -18,12 +18,12 @@ SheetInfo.sheet =
             -- effect_slice
             x=2,
             y=174,
-            width=4,
+            width=2,
             height=76,
 
             sourceX = 0,
             sourceY = 0,
-            sourceWidth = 3,
+            sourceWidth = 2,
             sourceHeight = 75
         },
         {

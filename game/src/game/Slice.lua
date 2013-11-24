@@ -29,7 +29,7 @@ function Class.create(options)
 		spriteSet = "effect",
 		animation = "slice",
 		group = options.group,
-		referencePoint = display.BottomCenterReferencePoint,
+		referencePoint = display.BottomRightReferencePoint,
 		position = offset:rotate(self.angle),
 		rotation = self.angle
 	}
