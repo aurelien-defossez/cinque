@@ -11,7 +11,8 @@ return {
 	},
 
 	game = {
-		background = "runtimedata/graphics/game/background.jpg"
+		background = "runtimedata/graphics/game/background.jpg",
+		foreground = "runtimedata/graphics/game/foreground.png"
 	},
 
 	-- Masks

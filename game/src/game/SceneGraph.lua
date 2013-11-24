@@ -20,6 +20,10 @@ local audio = require("audio")
 -- Class attributes
 -----------------------------------------------------------------------------------------
 
+local backgroundWidth = 200
+local backgroundHeight = 133
+local backgroundOffset = vec2(180, 0)
+
 local scorePosition = vec2(280, 20)
 local scoreSize = 20
 local scoreColor = { 240, 255, 200 }
@@ -47,12 +51,21 @@ function Class.create(options)
 
 	-- Create background
 	self.background = Rectangle.create{
-		width = config.hud.screen.width,
-		height = config.hud.screen.height,
+		width = backgroundWidth,
+		height = backgroundHeight,
 		group = groups.background,
-		position = vec2(0, 0),
+		position = backgroundOffset,
 		referencePoint = display.TopLeftReferencePoint,
 		image = config.paths.game.background
+	}
+
+	self.foreground = Rectangle.create{
+		width = config.hud.screen.width,
+		height = config.hud.screen.height,
+		group = groups.foreground,
+		position = vec2(0, 0),
+		referencePoint = display.TopLeftReferencePoint,
+		image = config.paths.game.foreground
 	}
 
 	-- Create crowd
@@ -97,6 +110,7 @@ function Class:destroy()
 
 	self.scoreText:destroy()
 	self.crowd:destroy()
+	self.foreground:destroy()
 	self.background:destroy()
 	self.taskHandler:destroy()
 

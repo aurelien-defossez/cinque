@@ -34,7 +34,9 @@ local phases = {
 local sheets = { "main" }
 
 local images = {
-	config.paths.scenes.logo
+	config.paths.scenes.logo,
+	config.paths.game.background,
+	config.paths.game.foreground
 }
 
 -----------------------------------------------------------------------------------------
