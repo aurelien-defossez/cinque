@@ -41,6 +41,8 @@ function Class.create(options)
 end
 
 function Class:destroy()
+	self:removeCustomers()
+
 	utils.deleteObject(self)
 end
 
@@ -49,6 +51,8 @@ end
 -----------------------------------------------------------------------------------------
 
 function Class:setCustomers(number)
+	self:removeCustomers()
+
 	local currentPositions = {}
 	local positionsFound = 0
 
@@ -68,13 +72,21 @@ function Class:setCustomers(number)
 			j = j + 1
 		until currentPositions[j]
 
-		local person = Sprite.create{
+		self.persons[#self.persons + 1] = Sprite.create{
 			spriteSet = "alex",
 			animation = "idle",
 			group = groups.crowd,
 			position = positions[j]
 		}
 	end
+end
+
+function Class:removeCustomers()
+	for index, person in pairs(self.persons) do
+		person:destroy()
+	end
+
+	self.persons = {}
 end
 
 -----------------------------------------------------------------------------------------

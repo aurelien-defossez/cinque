@@ -102,10 +102,6 @@ end
 -- Methods
 -----------------------------------------------------------------------------------------
 
-function Class:disable()
-	self.enabled = false
-end
-
 function Class:getPosition()
 	return vec2(self.group.x, self.group.y)
 end
@@ -125,6 +121,8 @@ function Class:hide(options)
 end
 
 function Class:disable()
+	self.enabled = false
+	
 	if self.outerCircle then
 		self.outerCircle:destroy()
 		self.innerCircle:destroy()

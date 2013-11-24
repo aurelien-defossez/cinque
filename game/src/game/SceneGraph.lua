@@ -31,7 +31,8 @@ local scoreColor = { 240, 255, 200 }
 local minCrowd = 2
 local maxCrowd = 9
 
-local tipLimits = { 0.05, 0.10, 0.20 }
+local tipAngleLimits = { 4, 8, 12 }
+local tipPercentLimits = { 0.05, 0.10, 0.20 }
 
 local abs = math.abs
 
@@ -252,8 +253,8 @@ function Class:goalAchieved(event)
 
 		previousAngle = currentAngle
 
-		for j = 1, #tipLimits do
-			if angularError <= goal * tipLimits[j] then
+		for j = 1, 3 do
+			if angularError <= goal * tipPercentLimits[j] and angularError <= tipAngleLimits[j] then
 				result.rating = j
 				break
 			end
