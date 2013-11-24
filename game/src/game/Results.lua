@@ -36,6 +36,8 @@ local sizes = {
 }
 
 local textDistance = 75
+local textStart = vec2(0, 10)
+local textEnd = vec2(0, -10)
 
 -----------------------------------------------------------------------------------------
 -- Initialization and Destruction
@@ -46,12 +48,14 @@ function Class.create(options)
 
 	-- Initialize attributes
 	self.position = options.position
+	self.onFinished = options.onFinished
 	self.texts = {}
 
 	-- Create timeline
 	local timelineDefinition = {}
 	local time = 0
 
+	-- Ratings
 	for index, result in pairs(options.results) do
 		timelineDefinition[#timelineDefinition + 1] = {
 			action = "showResult",
@@ -66,6 +70,12 @@ function Class.create(options)
 
 		time = time + timeOffset
 	end
+
+	-- End
+	timelineDefinition[#timelineDefinition + 1] = {
+		action = "finish",
+		at = time + duration
+	}
 
 	self.timeline = TimelinePlayer.create{
 		timeline = timelineDefinition,
@@ -83,11 +93,11 @@ end
 function Class:destroy()
 	Runtime:removeEventListener("ecussonEnterFrame", self)
 
-	for index, text in pairs(self.text) do
-		if text then
-			text:destroy()
-		end
+	for index, text in pairs(self.texts) do
+		text:destroy()
 	end
+
+	self.timeline:destroy()
 
 	utils.deleteObject(self)
 end
@@ -109,10 +119,18 @@ function Class:showResult(options)
 		self.texts[options.parameters.index] = text
 	end
 
-	if options.progress == 1.0 then
-		self.texts[options.parameters.index]:destroy()
-		self.texts[options.parameters.index] = nil
-	end
+	self.texts[options.parameters.index]:setPosition(
+		self.position + vec2(0, -1):rotate(options.parameters.angle) * textDistance
+		+ utils.interpolateLinear{
+			from = textStart,
+			to = textEnd,
+			delta = options.progress
+		})
+end
+
+function Class:finish(options)
+	self.onFinished()
+	self:destroy()
 end
 
 -----------------------------------------------------------------------------------------

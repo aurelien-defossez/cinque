@@ -11,8 +11,8 @@ Pizza = Class
 -- Class attributes
 -----------------------------------------------------------------------------------------
 
-local platePosition = vec2(100, 100)
-local pizzaPosition = vec2(135, 100)
+local platePosition = vec2(-35, 0)
+local pizzaPosition = vec2(0, 0)
 
 local innerRadius = 30
 local outerRadius = 75
@@ -31,22 +31,22 @@ function Class.create(options)
 	self.enabled = true
 
 	-- Create hitboxes
-	self.innerCircle = circle(self.position, innerRadius)
-	self.outerCircle = circle(self.position, outerRadius)
+	self.innerCircle = circle(self.position + pizzaPosition, innerRadius)
+	self.outerCircle = circle(self.position + pizzaPosition, outerRadius)
 
 	-- Create sprites
 	self.plateSprite = Sprite.create{
 		spriteSet = "plate",
 		animation = "idle",
 		group = groups.pizza,
-		position = platePosition
+		position = self.position + platePosition
 	}
 
 	self.pizzasprite = Sprite.create{
 		spriteSet = "pizza",
 		animation = "complete",
 		group = groups.pizza,
-		position = pizzaPosition
+		position = self.position + pizzaPosition
 	}
 
 	if config.debug.drawDebug then
@@ -107,7 +107,7 @@ function Class:gestureEnded(event)
 
 		if sliced then
 			self.slices[#self.slices + 1] = Slice.create{
-				center = self.position,
+				center = self.position + pizzaPosition,
 				angle = angle
 			}
 
