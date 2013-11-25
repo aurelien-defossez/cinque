@@ -24,9 +24,11 @@ local backgroundWidth = 200
 local backgroundHeight = 133
 local backgroundOffset = vec2(180, 0)
 
-local scorePosition = vec2(215, 190)
+local scorePosition = vec2(205, 190)
 local scoreSize = 20
 local scoreColor = { 240, 255, 200 }
+
+local bonusPosition = vec2(205, 170)
 
 local gameOverPosition = vec2(115, 100)
 local gameOverSize = 40
@@ -104,7 +106,6 @@ function Class.create(options)
 		style = "light",
 		position = scorePosition,
 		group = groups.hud,
-		referencePoint = display.CenterReferencePoint,
 		size = scoreSize,
 		color = scoreColor
 	}
@@ -236,6 +237,11 @@ end
 function Class:increaseScore(options)
 	self.score = self.score + options.value
 	self:updateScore()
+
+	BonusPoints.create{
+		position = bonusPosition,
+		points = options.value == 100 and "1€" or options.value.."cts"
+	}
 end
 
 function Class:updateScore()
@@ -249,7 +255,7 @@ function Class:updateScore()
 		zeroes = "." .. zeroes .. "0"
 	end
 
-	self.scoreText:setText(self.score * 0.01 .. zeroes)
+	self.scoreText:setText(self.score * 0.01 .. zeroes.." €")
 end
 
 -----------------------------------------------------------------------------------------

@@ -14,6 +14,7 @@ local Class = storyboard.newScene()
 
 local classes = {
 	"src.hud.OutlineText",
+	"src.hud.BonusPoints",
 
 	"src.game.Pizza",
 	"src.game.Slice",
