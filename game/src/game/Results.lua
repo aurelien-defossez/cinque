@@ -18,7 +18,7 @@ local texts = {
 	"Perfect",
 	"Good",
 	"OK",
-	"Poor"
+	"Bad"
 }
 
 local styles = {
@@ -35,18 +35,7 @@ local sizes = {
 	16
 }
 
-local tips = {
-	{ 000, 000, 000 },	-- 1
-	{ 020, 010, 005 },	-- 2
-	{ 100, 050, 020 },	-- 3
-	{ 020, 010, 010 },	-- 4
-	{ 200, 100, 050 },	-- 5
-	{ 100, 050, 020 },	-- 6
-	{ 500, 200, 100 },	-- 7
-	{ 100, 050, 020 },	-- 8
-	{ 500, 200, 100 },	-- 9
-	{ 200, 100, 050 },	-- 10
-}
+local tips = { 100, 50, 20 }
 
 local textDistance = 75
 local textStart = vec2(0, 10)
@@ -60,7 +49,6 @@ function Class.create(options)
 	local self = utils.extend(Class)
 
 	-- Initialize attributes
-	self.tips = tips[#options.results]
 	self.position = options.position
 	self.onFinished = options.onFinished
 	self.texts = {}
@@ -133,7 +121,7 @@ function Class:showResult(options)
 		if options.parameters.rating < 4 then
 			Runtime:dispatchEvent{
 				name = "increaseScore",
-				value = self.tips[options.parameters.rating]
+				value = tips[options.parameters.rating]
 			}
 		end
 

@@ -14,7 +14,7 @@ Timer = Class
 local timerPosition = vec2(290, 180)
 local tickOffset = vec2(-0.5, -4)
 
-local startTime = 4
+local startTime = 60
 
 -----------------------------------------------------------------------------------------
 -- Initialization and Destruction
