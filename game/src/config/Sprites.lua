@@ -41,47 +41,58 @@ return {
 		people = {
 			adrian = {
 				idle = {},
-				happy = {}
+				happy = {},
+				sad = {}
 			},
 			alex = {
 				idle = {},
-				happy = {}
+				happy = {},
+				sad = {}
 			},
 			francois = {
 				idle = {},
-				happy = {}
+				happy = {},
+				sad = {}
 			},
 			fred = {
 				idle = {},
-				happy = {}
+				happy = {},
+				sad = {}
 			},
 			geff = {
 				idle = {},
-				happy = {}
+				happy = {},
+				sad = {}
 			},
 			julien = {
 				idle = {},
-				happy = {}
+				happy = {},
+				sad = {}
 			},
 			laurent = {
 				idle = {},
-				happy = {}
+				happy = {},
+				sad = {}
 			},
 			louisremi = {
 				idle = {},
-				happy = {}
+				happy = {},
+				sad = {}
 			},
 			michael = {
 				idle = {},
-				happy = {}
+				happy = {},
+				sad = {}
 			},
 			sarah = {
 				idle = {},
-				happy = {}
+				happy = {},
+				sad = {}
 			},
 			stephane = {
 				idle = {},
-				happy = {}
+				happy = {},
+				sad = {}
 			}
 		}
 	},

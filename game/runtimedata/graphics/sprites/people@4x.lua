@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker (http://www.codeandweb.com/texturepacker)
 --
--- $TexturePacker:SmartUpdate:08b1174899af52e2dd7660d778bb5a37:7542db6dc7d6ff86998a7a949aebc000:d50e8d26da77ac2f9a8746caa0fb48dd$
+-- $TexturePacker:SmartUpdate:2024c1301f6c16cd5bcecb32f2a185da:b3ad405a803d317d0dcf296fe51e2c7c:d50e8d26da77ac2f9a8746caa0fb48dd$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -28,8 +28,8 @@ SheetInfo.sheet =
         },
         {
             -- adrian_idle
-            x=528,
-            y=824,
+            x=1024,
+            y=1640,
             width=240,
             height=400,
 
@@ -39,9 +39,21 @@ SheetInfo.sheet =
             sourceHeight = 400
         },
         {
+            -- adrian_sad
+            x=784,
+            y=1232,
+            width=240,
+            height=400,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 235,
+            sourceHeight = 400
+        },
+        {
             -- alex_happy
-            x=976,
-            y=1640,
+            x=1720,
+            y=824,
             width=200,
             height=400,
 
@@ -52,14 +64,26 @@ SheetInfo.sheet =
         },
         {
             -- alex_idle
-            x=768,
-            y=1640,
+            x=1512,
+            y=824,
             width=200,
             height=400,
 
             sourceX = 8,
             sourceY = 0,
             sourceWidth = 219,
+            sourceHeight = 400
+        },
+        {
+            -- alex_sad
+            x=1760,
+            y=416,
+            width=200,
+            height=400,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 202,
             sourceHeight = 400
         },
         {
@@ -76,14 +100,26 @@ SheetInfo.sheet =
         },
         {
             -- francois_idle
-            x=768,
-            y=1232,
+            x=1064,
+            y=416,
             width=232,
             height=400,
 
             sourceX = 0,
             sourceY = 0,
             sourceWidth = 227,
+            sourceHeight = 400
+        },
+        {
+            -- francois_sad
+            x=1272,
+            y=1640,
+            width=224,
+            height=400,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 222,
             sourceHeight = 400
         },
         {
@@ -100,8 +136,8 @@ SheetInfo.sheet =
         },
         {
             -- fred_idle
-            x=8,
-            y=1640,
+            x=312,
+            y=416,
             width=264,
             height=400,
 
@@ -111,9 +147,21 @@ SheetInfo.sheet =
             sourceHeight = 400
         },
         {
+            -- fred_sad
+            x=280,
+            y=824,
+            width=264,
+            height=400,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 260,
+            sourceHeight = 400
+        },
+        {
             -- geff_happy
             x=8,
-            y=1232,
+            y=1640,
             width=264,
             height=400,
 
@@ -124,8 +172,8 @@ SheetInfo.sheet =
         },
         {
             -- geff_idle
-            x=528,
-            y=1640,
+            x=1040,
+            y=824,
             width=232,
             height=400,
 
@@ -135,17 +183,29 @@ SheetInfo.sheet =
             sourceHeight = 400
         },
         {
+            -- geff_sad
+            x=824,
+            y=416,
+            width=232,
+            height=400,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 228,
+            sourceHeight = 400
+        },
+        {
             -- julien_happy
-            x=280,
-            y=1640,
+            x=552,
+            y=824,
             width=240,
             height=400,
 
         },
         {
             -- julien_idle
-            x=280,
-            y=1232,
+            x=776,
+            y=1640,
             width=240,
             height=400,
 
@@ -153,6 +213,14 @@ SheetInfo.sheet =
             sourceY = 0,
             sourceWidth = 241,
             sourceHeight = 400
+        },
+        {
+            -- julien_sad
+            x=1032,
+            y=1232,
+            width=232,
+            height=400,
+
         },
         {
             -- laurent_happy
@@ -169,10 +237,22 @@ SheetInfo.sheet =
         {
             -- laurent_idle
             x=8,
+            y=1232,
+            width=264,
+            height=400,
+
+        },
+        {
+            -- laurent_sad
+            x=8,
             y=824,
             width=264,
             height=400,
 
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 259,
+            sourceHeight = 400
         },
         {
             -- louisremi_happy
@@ -188,8 +268,8 @@ SheetInfo.sheet =
         },
         {
             -- louisremi_idle
-            x=528,
-            y=1232,
+            x=800,
+            y=824,
             width=232,
             height=400,
 
@@ -199,16 +279,28 @@ SheetInfo.sheet =
             sourceHeight = 400
         },
         {
+            -- louisremi_sad
+            x=536,
+            y=1232,
+            width=240,
+            height=400,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 241,
+            sourceHeight = 400
+        },
+        {
             -- michael_happy
-            x=312,
-            y=416,
+            x=528,
+            y=1640,
             width=240,
             height=400,
 
         },
         {
             -- michael_idle
-            x=800,
+            x=1304,
             y=416,
             width=224,
             height=400,
@@ -217,6 +309,14 @@ SheetInfo.sheet =
             sourceY = 0,
             sourceWidth = 221,
             sourceHeight = 400
+        },
+        {
+            -- michael_sad
+            x=1536,
+            y=416,
+            width=216,
+            height=400,
+
         },
         {
             -- sarah_happy
@@ -233,7 +333,7 @@ SheetInfo.sheet =
         {
             -- sarah_idle
             x=280,
-            y=824,
+            y=1640,
             width=240,
             height=400,
 
@@ -243,8 +343,16 @@ SheetInfo.sheet =
             sourceHeight = 400
         },
         {
+            -- sarah_sad
+            x=280,
+            y=1232,
+            width=248,
+            height=400,
+
+        },
+        {
             -- stephane_happy
-            x=776,
+            x=1280,
             y=824,
             width=224,
             height=400,
@@ -252,7 +360,7 @@ SheetInfo.sheet =
         },
         {
             -- stephane_idle
-            x=560,
+            x=584,
             y=416,
             width=232,
             height=400,
@@ -260,6 +368,18 @@ SheetInfo.sheet =
             sourceX = 0,
             sourceY = 0,
             sourceWidth = 230,
+            sourceHeight = 400
+        },
+        {
+            -- stephane_sad
+            x=1272,
+            y=1232,
+            width=224,
+            height=400,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 220,
             sourceHeight = 400
         },
     },
@@ -273,26 +393,37 @@ SheetInfo.frameIndex =
 
     ["adrian_happy"] = 1,
     ["adrian_idle"] = 2,
-    ["alex_happy"] = 3,
-    ["alex_idle"] = 4,
-    ["francois_happy"] = 5,
-    ["francois_idle"] = 6,
-    ["fred_happy"] = 7,
-    ["fred_idle"] = 8,
-    ["geff_happy"] = 9,
-    ["geff_idle"] = 10,
-    ["julien_happy"] = 11,
-    ["julien_idle"] = 12,
-    ["laurent_happy"] = 13,
-    ["laurent_idle"] = 14,
-    ["louisremi_happy"] = 15,
-    ["louisremi_idle"] = 16,
-    ["michael_happy"] = 17,
-    ["michael_idle"] = 18,
-    ["sarah_happy"] = 19,
-    ["sarah_idle"] = 20,
-    ["stephane_happy"] = 21,
-    ["stephane_idle"] = 22,
+    ["adrian_sad"] = 3,
+    ["alex_happy"] = 4,
+    ["alex_idle"] = 5,
+    ["alex_sad"] = 6,
+    ["francois_happy"] = 7,
+    ["francois_idle"] = 8,
+    ["francois_sad"] = 9,
+    ["fred_happy"] = 10,
+    ["fred_idle"] = 11,
+    ["fred_sad"] = 12,
+    ["geff_happy"] = 13,
+    ["geff_idle"] = 14,
+    ["geff_sad"] = 15,
+    ["julien_happy"] = 16,
+    ["julien_idle"] = 17,
+    ["julien_sad"] = 18,
+    ["laurent_happy"] = 19,
+    ["laurent_idle"] = 20,
+    ["laurent_sad"] = 21,
+    ["louisremi_happy"] = 22,
+    ["louisremi_idle"] = 23,
+    ["louisremi_sad"] = 24,
+    ["michael_happy"] = 25,
+    ["michael_idle"] = 26,
+    ["michael_sad"] = 27,
+    ["sarah_happy"] = 28,
+    ["sarah_idle"] = 29,
+    ["sarah_sad"] = 30,
+    ["stephane_happy"] = 31,
+    ["stephane_idle"] = 32,
+    ["stephane_sad"] = 33,
 }
 
 function SheetInfo:getSheet()

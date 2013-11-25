@@ -129,6 +129,10 @@ function Class:showResult(options)
 			Runtime:dispatchEvent{
 				name = "happyFace"
 			}
+		elseif options.parameters.rating == 4 then
+			Runtime:dispatchEvent{
+				name = "sadFace"
+			}
 		end
 
 		self.texts[options.parameters.index] = text
