@@ -38,7 +38,7 @@ function Class.create(options)
 	self.goal = options.goal
 	self.slices = {}
 	self.phase = "showing"
-	self.enabled = true
+	self.enabled = false
 
 	-- Create group
 	self.group = display.newGroup()
@@ -181,6 +181,7 @@ end
 function Class:transitionEnd(event)
 	if self.phase == "showing" then
 		self.phase = "idle"
+		self.enabled = true
 
 		-- Create hitboxes
 		self.innerCircle = circle(idlePosition, innerRadius)

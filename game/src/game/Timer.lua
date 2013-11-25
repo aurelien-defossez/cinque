@@ -14,7 +14,7 @@ Timer = Class
 local timerPosition = vec2(290, 180)
 local tickOffset = vec2(-0.5, -4)
 
-local startTime = 60
+local startTime = 4
 
 -----------------------------------------------------------------------------------------
 -- Initialization and Destruction
@@ -78,6 +78,6 @@ function Class:ecussonEnterFrame(options)
 			}
 		end
 
-		self.tick:setRotation(self.time / startTime * 360)
+		self.tick:setRotation(-self.time / startTime * 360)
 	end
 end

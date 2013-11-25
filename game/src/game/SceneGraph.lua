@@ -28,9 +28,14 @@ local scorePosition = vec2(215, 190)
 local scoreSize = 20
 local scoreColor = { 240, 255, 200 }
 
-local gameOverPosition = vec2(115, config.hud.screen.halfHeight)
+local gameOverPosition = vec2(115, 100)
 local gameOverSize = 40
 local gameOverTransition = 1.0
+
+local restartPosition = vec2(115, 150)
+local restartSize = 20
+local restartDelay = 1.0
+local restartTransition = 1.0
 
 local crowdProba = {
 	0,	-- 1
@@ -58,6 +63,7 @@ function Class.create(options)
 
 	-- Initialize attributes
 	self.playing = true
+	self.canRestart = false
 	self.gestureDetector = GestureDetector.create()
 	self.rogueElements = {}
 	self.score = 0
@@ -112,6 +118,7 @@ function Class.create(options)
 	Runtime:addEventListener("goalAchieved", self)
 	Runtime:addEventListener("increaseScore", self)
 	Runtime:addEventListener("gameOver", self)
+	Runtime:addEventListener("tap", self)
 	
 	return self
 end
@@ -123,6 +130,7 @@ function Class:destroy()
 	Runtime:removeEventListener("goalAchieved", self)
 	Runtime:removeEventListener("increaseScore", self)
 	Runtime:removeEventListener("gameOver", self)
+	Runtime:removeEventListener("tap", self)
 
 	-- Stop all sounds
 	audio.stop()
@@ -137,16 +145,9 @@ function Class:destroy()
 	self.background:destroy()
 	self.taskHandler:destroy()
 
-	if self.pizza then
-		self.pizza:destroy()
-	end
-
-	if self.crowd then
-		self.crowd:destroy()
-	end
-
 	if self.gameOverText then
 		self.gameOverText:destroy()
+		self.restartText:destroy()
 	end
 
 	utils.deleteObject(self)
@@ -164,6 +165,7 @@ function Class:sendPizza()
 		self.pizza:hide{
 			onHide = function()
 				self.pizza:destroy()
+				self.pizza = nil
 				self:doSendPizza()
 			end
 		}
@@ -203,10 +205,29 @@ function Class:doSendPizza()
 			size = gameOverSize
 		}
 
+		self.restartText = OutlineText.create{
+			text = "Tap to restart",
+			style = "light",
+			group = groups.hud,
+			position = restartPosition,
+			size = restartSize
+		}
+
 		self.gameOverText:getDisplayGroup().alpha = 0.0
+		self.restartText:getDisplayGroup().alpha = 0.0
+
 		tnt:newTransition(self.gameOverText:getDisplayGroup(), {
 			time = gameOverTransition * 1000,
 			alpha = 1.0
+		})
+
+		tnt:newTransition(self.restartText:getDisplayGroup(), {
+			time = restartTransition * 1000,
+			delay = restartDelay * 1000,
+			alpha = 1.0,
+			onEnd = function()
+				self.canRestart = true
+			end
 		})
 	end
 end
@@ -329,4 +350,10 @@ end
 
 function Class:gameOver(event)
 	self.playing = false
+end
+
+function Class:tap(event)
+	if self.canRestart then
+		storyboard.reloadScene()
+	end
 end
