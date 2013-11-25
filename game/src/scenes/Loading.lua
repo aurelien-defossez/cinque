@@ -36,7 +36,6 @@ local phases = {
 local sheets = { "main", "people" }
 
 local images = {
-	config.paths.scenes.logo,
 	config.paths.game.background,
 	config.paths.game.foreground
 }
@@ -137,10 +136,8 @@ function Class:transitionEnd(event)
 		self.fadingIn = false
 		self.phase = 1
 		tnt:newTimer(config.debug.noLoading and 1 or config.hud.loading.idle * 1000, self)
-	elseif config.debug.noTitleScreen then
-		storyboard.gotoScene("src.scenes.Game")
 	else
-		storyboard.gotoScene("src.scenes.Title")
+		storyboard.gotoScene("src.scenes.Game")
 	end
 end
 
