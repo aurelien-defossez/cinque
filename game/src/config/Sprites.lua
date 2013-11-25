@@ -47,7 +47,15 @@ return {
 				idle = {},
 				happy = {}
 			},
+			francois = {
+				idle = {},
+				happy = {}
+			},
 			fred = {
+				idle = {},
+				happy = {}
+			},
+			geff = {
 				idle = {},
 				happy = {}
 			},

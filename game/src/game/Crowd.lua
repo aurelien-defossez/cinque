@@ -36,7 +36,9 @@ local positions = {
 local people = {
 	"adrian",
 	"alex",
+	"francois",
 	"fred",
+	"geff",
 	"julien",
 	"laurent",
 	"louisremi",
