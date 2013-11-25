@@ -32,7 +32,17 @@ local gameOverPosition = vec2(115, config.hud.screen.halfHeight)
 local gameOverSize = 40
 local gameOverTransition = 1.0
 
-local crowdProba = { 0, 5, 10, 7, 10, 8, 5, 4, 3 }
+local crowdProba = {
+	0,	-- 1
+	4,	-- 2
+	8,	-- 3
+	5,	-- 4
+	10,	-- 5
+	8,	-- 6
+	5,	-- 7
+	4,	-- 8
+	3	-- 9
+}
 
 local tipAngleLimits = { 4, 8, 12 }
 local tipPercentLimits = { 0.05, 0.10, 0.20 }
