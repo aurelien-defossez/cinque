@@ -143,6 +143,7 @@ function Class:destroy()
 	self.scoreText:destroy()
 	self.foreground:destroy()
 	self.background:destroy()
+	self.gestureDetector:destroy()
 	self.taskHandler:destroy()
 
 	if self.gameOverText then
