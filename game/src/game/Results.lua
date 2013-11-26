@@ -14,18 +14,11 @@ Results = Class
 local timeOffset = 0.25
 local duration = 1.0
 
-local texts = {
-	"Perfect",
-	"Good",
-	"OK",
-	"Bad"
-}
-
 local styles = {
 	"perfect",
 	"good",
 	"ok",
-	"poor"
+	"bad"
 }
 
 local sizes = {
@@ -114,10 +107,9 @@ end
 
 function Class:showResult(options)
 	if options.firstFrame then
-		local text = OutlineText.create{
-			style = styles[options.parameters.rating],
-			text = texts[options.parameters.rating],
-			size = sizes[options.parameters.rating],
+		local text = Sprite.create{
+			spriteSet = "rating",
+			animation = styles[options.parameters.rating],
 			group = groups.hud,
 			position = self.position + vec2(0, -1):rotate(options.parameters.angle) * textDistance
 		}

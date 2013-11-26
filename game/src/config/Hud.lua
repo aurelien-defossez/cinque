@@ -72,22 +72,6 @@ return {
 		light = {
 			color = { 254, 228, 158 },
 			borderColor = { 128, 93, 80 }
-		},
-		perfect = {
-			color = { 28, 232, 45 },
-			borderColor = { 30, 30, 30 }
-		},
-		good = {
-			color = { 222, 232, 28 },
-			borderColor = { 30, 30, 30 }
-		},
-		ok = {
-			color = { 200, 198, 247 },
-			borderColor = { 30, 30, 30 }
-		},
-		poor = {
-			color = { 178, 77, 84 },
-			borderColor = { 30, 30, 30 }
 		}
 	},
 }

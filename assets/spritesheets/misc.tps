@@ -213,6 +213,10 @@
             <filename>../sprites/main/coin_euro.png</filename>
             <filename>../sprites/main/coin_cent20.png</filename>
             <filename>../sprites/main/coin_cent50.png</filename>
+            <filename>../sprites/main/rating_bad.png</filename>
+            <filename>../sprites/main/rating_good.png</filename>
+            <filename>../sprites/main/rating_ok.png</filename>
+            <filename>../sprites/main/rating_perfect.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

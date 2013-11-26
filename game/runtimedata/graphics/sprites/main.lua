@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker (http://www.codeandweb.com/texturepacker)
 --
--- $TexturePacker:SmartUpdate:aca2b2155d120f6a57e190a53073a76e:806f852611b91c7d51830c74cc70a325:7b91f048090ec15651888590f1f35b23$
+-- $TexturePacker:SmartUpdate:5acfc7155e18531b8f756e6edc4b3356:588259a3f2ff1de2f4b5e187a25bc313:7b91f048090ec15651888590f1f35b23$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -16,8 +16,8 @@ SheetInfo.sheet =
     
         {
             -- coin_cent20
-            x=50,
-            y=234,
+            x=72,
+            y=202,
             width=18,
             height=18,
 
@@ -83,6 +83,54 @@ SheetInfo.sheet =
             sourceHeight = 169
         },
         {
+            -- rating_bad
+            x=86,
+            y=222,
+            width=22,
+            height=14,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 21,
+            sourceHeight = 13
+        },
+        {
+            -- rating_good
+            x=50,
+            y=234,
+            width=34,
+            height=18,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 33,
+            sourceHeight = 17
+        },
+        {
+            -- rating_ok
+            x=86,
+            y=238,
+            width=20,
+            height=12,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 19,
+            sourceHeight = 12
+        },
+        {
+            -- rating_perfect
+            x=62,
+            y=174,
+            width=64,
+            height=26,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 63,
+            sourceHeight = 25
+        },
+        {
             -- timer_background
             x=6,
             y=174,
@@ -97,7 +145,7 @@ SheetInfo.sheet =
         {
             -- timer_tick
             x=62,
-            y=174,
+            y=202,
             width=8,
             height=26,
 
@@ -121,8 +169,12 @@ SheetInfo.frameIndex =
     ["effect_slice"] = 4,
     ["pizza_complete"] = 5,
     ["plate_idle"] = 6,
-    ["timer_background"] = 7,
-    ["timer_tick"] = 8,
+    ["rating_bad"] = 7,
+    ["rating_good"] = 8,
+    ["rating_ok"] = 9,
+    ["rating_perfect"] = 10,
+    ["timer_background"] = 11,
+    ["timer_tick"] = 12,
 }
 
 function SheetInfo:getSheet()

@@ -41,6 +41,13 @@ return {
 				cent20 = {},
 				cent50 = {},
 				euro = {}
+			},
+
+			rating = {
+				bad = {},
+				ok = {},
+				good = {},
+				perfect = {}
 			}
 		},
 
