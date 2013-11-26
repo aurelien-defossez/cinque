@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker (http://www.codeandweb.com/texturepacker)
 --
--- $TexturePacker:SmartUpdate:4ee93a307aafabb0838533be7bc9d129:b76daeb2bda2a68557742ac78186e375:7b91f048090ec15651888590f1f35b23$
+-- $TexturePacker:SmartUpdate:aca2b2155d120f6a57e190a53073a76e:806f852611b91c7d51830c74cc70a325:7b91f048090ec15651888590f1f35b23$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -14,6 +14,42 @@ SheetInfo.sheet =
 {
     frames = {
     
+        {
+            -- coin_cent20
+            x=50,
+            y=234,
+            width=18,
+            height=18,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 18,
+            sourceHeight = 18
+        },
+        {
+            -- coin_cent50
+            x=28,
+            y=234,
+            width=20,
+            height=20,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 20,
+            sourceHeight = 20
+        },
+        {
+            -- coin_euro
+            x=6,
+            y=234,
+            width=20,
+            height=20,
+
+            sourceX = 0,
+            sourceY = 0,
+            sourceWidth = 19,
+            sourceHeight = 19
+        },
         {
             -- effect_slice
             x=2,
@@ -79,11 +115,14 @@ SheetInfo.sheet =
 SheetInfo.frameIndex =
 {
 
-    ["effect_slice"] = 1,
-    ["pizza_complete"] = 2,
-    ["plate_idle"] = 3,
-    ["timer_background"] = 4,
-    ["timer_tick"] = 5,
+    ["coin_cent20"] = 1,
+    ["coin_cent50"] = 2,
+    ["coin_euro"] = 3,
+    ["effect_slice"] = 4,
+    ["pizza_complete"] = 5,
+    ["plate_idle"] = 6,
+    ["timer_background"] = 7,
+    ["timer_tick"] = 8,
 }
 
 function SheetInfo:getSheet()

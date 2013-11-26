@@ -210,6 +210,9 @@
             <filename>../sprites/main/plate_idle.png</filename>
             <filename>../sprites/main/timer_background.png</filename>
             <filename>../sprites/main/timer_tick.png</filename>
+            <filename>../sprites/main/coin_euro.png</filename>
+            <filename>../sprites/main/coin_cent20.png</filename>
+            <filename>../sprites/main/coin_cent50.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

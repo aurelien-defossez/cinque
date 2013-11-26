@@ -35,7 +35,11 @@ local sizes = {
 	16
 }
 
-local tips = { 100, 50, 20 }
+local tips = {
+	100,
+	50,
+	20
+}
 
 local textDistance = 75
 local textStart = vec2(0, 10)

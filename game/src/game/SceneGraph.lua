@@ -28,8 +28,6 @@ local scorePosition = vec2(205, 190)
 local scoreSize = 20
 local scoreColor = { 240, 255, 200 }
 
-local bonusPosition = vec2(205, 170)
-
 local gameOverPosition = vec2(115, 100)
 local gameOverSize = 40
 local gameOverTransition = 1.0
@@ -163,6 +161,7 @@ function Class:sendPizza()
 	-- Cleaning
 	if self.pizza then
 		self.crowd:hide()
+		self.coins:hide()
 
 		self.pizza:hide{
 			onHide = function()
@@ -198,6 +197,9 @@ function Class:doSendPizza()
 		self.crowd = Crowd.create{
 			number = self.nbCustomers
 		}
+
+		-- Create coins
+		self.coins = Coins.create{}
 	else
 		self.gameOverText = OutlineText.create{
 			text = "Game OVer",
@@ -237,11 +239,7 @@ end
 function Class:increaseScore(options)
 	self.score = self.score + options.value
 	self:updateScore()
-
-	BonusPoints.create{
-		position = bonusPosition,
-		points = options.value == 100 and "1€" or options.value.."cts"
-	}
+	self.coins:add(options.value)
 end
 
 function Class:updateScore()

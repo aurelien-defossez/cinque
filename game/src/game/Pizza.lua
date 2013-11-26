@@ -11,14 +11,14 @@ Pizza = Class
 -- Class attributes
 -----------------------------------------------------------------------------------------
 
-local startPosition = vec2(-120, 100)
+local startPosition = vec2(-120, 90)
 local startRotation = 0
 
-local idlePosition = vec2(105, 100)
+local idlePosition = vec2(105, 90)
 local idleRotation = 0
 
-local endPosition = vec2(-30, 350)
-local endRotation = 45
+local endPosition = vec2(50, -140)
+local endRotation = -30
 
 local plateOffset = vec2(-35, 0)
 local inDuration = 0.5

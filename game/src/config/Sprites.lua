@@ -35,6 +35,12 @@ return {
 
 			effect = {
 				slice = {}
+			},
+
+			coin = {
+				cent20 = {},
+				cent50 = {},
+				euro = {}
 			}
 		},
 

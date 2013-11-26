@@ -70,6 +70,7 @@ groups = {
 	foreground = display.newGroup(),
 	timer = display.newGroup(),
 	pizza = display.newGroup(),
+	coins = display.newGroup(),
 	hud = display.newGroup()
 }
 
