@@ -2,6 +2,7 @@ return {
 	-- Backgrounds
 	scenes = {
 		logo = "runtimedata/graphics/logo.png",
+		title = "runtimedata/graphics/title-background.jpg"
 	},
 
 	-- Sprites

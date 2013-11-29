@@ -58,6 +58,7 @@ function Class.create(options)
 	self.pizzasprite = Sprite.create{
 		spriteSet = "pizza",
 		animation = "complete",
+		rotation = math.random(0, 360),
 		group = self.group
 	}
 

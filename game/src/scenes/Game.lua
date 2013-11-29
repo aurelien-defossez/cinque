@@ -32,6 +32,19 @@ function Class:enterScene(event)
 	
 	self.sceneGraph = SceneGraph.create{}
 
+	self.fader = Rectangle.create{
+		width = config.hud.screen.width,
+		height = config.hud.screen.height,
+		color = { 0, 0, 0 },
+		referencePoint = display.TopLeftReferencePoint,
+		group = groups.fader
+	}
+
+	tnt:newTransition(self.fader:getDisplayObject(), {
+		time = 500,
+		alpha = 0.0
+	})
+
 	-- Bind events
 	Runtime:addEventListener("ecussonEnterFrame", self)
 	Runtime:addEventListener("requirePause", self)
@@ -45,6 +58,7 @@ function Class:exitScene(event)
 	Runtime:removeEventListener("ecussonEnterFrame", self)
 	Runtime:removeEventListener("requirePause", self)
 	
+	self.fader:destroy()
 	self.sceneGraph:destroy()
 	self.taskHandler:destroy()
 end

@@ -17,6 +17,7 @@ local endPosition = vec2(0, 220)
 local coinFirstPosition = vec2(155, 0)
 local coinNextPosition = vec2(-20, 0)
 local coinStartPosition = vec2(-250, 0)
+local coinStartRotation = -45
 local inTransition = 0.5
 local outTransition = 0.25
 
@@ -69,14 +70,16 @@ function Class:add(value)
 		animation = animation,
 		group = self.group,
 		x = coinStartPosition.x,
-		y = coinStartPosition.y
+		y = coinStartPosition.y,
+		rotation = coinStartRotation
 	}
 
 	-- Transition
 	tnt:newTransition(coin:getDisplayObject(), {
 		time = inTransition * 1000,
 		x = self.currentCoinPosition.x,
-		y = self.currentCoinPosition.y
+		y = self.currentCoinPosition.y,
+		rotation = 0
 	})
 
 	self.currentCoinPosition = self.currentCoinPosition + coinNextPosition

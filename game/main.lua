@@ -71,7 +71,8 @@ groups = {
 	timer = display.newGroup(),
 	pizza = display.newGroup(),
 	coins = display.newGroup(),
-	hud = display.newGroup()
+	hud = display.newGroup(),
+	fader = display.newGroup()
 }
 
 -----------------------------------------------------------------------------------------
