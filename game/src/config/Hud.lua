@@ -19,7 +19,7 @@ return {
 	},
 
 	logo = {
-		offset = vec2(0, -12),
+		offset = vec2(0, -52),
 		backgroundColor = { 255, 255, 255 },
 		width = 256,
 		height = 60

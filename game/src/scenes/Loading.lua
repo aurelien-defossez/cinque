@@ -41,6 +41,10 @@ local images = {
 	config.paths.game.foreground
 }
 
+local gdpWidth = 100
+local gdpHeight = 100
+local gdpPosition = vec2(config.hud.screen.halfWidth, 140)
+
 -----------------------------------------------------------------------------------------
 -- Initialization and Destruction
 -----------------------------------------------------------------------------------------
@@ -77,12 +81,21 @@ function Class:enterScene(event)
 		group = groups.background,
 		referencePoint = display.TopLeftReferencePoint,
 		width = config.hud.logo.width,
-		height = config.hud.logo.height
+		height = config.hud.logo.height,
+		position = config.hud.logo.offset
 	}
 
 	self.logo:setPosition(config.hud.logo.offset + vec2(
 		(config.hud.screen.width - self.logo.width) * .5,
 		(config.hud.screen.height - self.logo.height) * .5))
+
+	self.gdp = Rectangle.create{
+		width = gdpWidth,
+		height = gdpHeight,
+		image = config.paths.scenes.gdp,
+		position = gdpPosition,
+		group = groups.background
+	}
 
 	-- Draw fader
 	self.fader = Rectangle.create{
@@ -121,6 +134,7 @@ function Class:exitScene(event)
 	Runtime:removeEventListener("key", self)
 
 	self.fader:destroy()
+	self.gdp:destroy()
 	self.logo:destroy()
 	self.background:destroy()
 end
